@@ -1,0 +1,38 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    specs.txt                                          :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/08/01 17:35:24 by mairivie          #+#    #+#              #
+#    Updated: 2025/08/01 17:46:30 by mairivie         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+un executable compile manuellelemt
+
+le fichier s'appelle megaphone
+
+Un makefile permet de la compiler via make
+
+un exec s'ouvre en faisant des bruits (arguments ou pas)
+
+si un argument, tout passer en maj, terminer par un \n
+
+si plusieurs arguments, passer chacun d'entre eux en maj
+    NB: chaque argument est colle directement a son voisin, pas d'ajout d'espace separateur 
+    NB: apres tous les arguments terminer par un \NB
+
+TODO :  apprendre comment compiler un fichier c++ (flags, utilites, mais ou autre)
+            test: l'exe compile
+        apprendre comment donner a un nom a un executable lorsqu'il compile
+            test: l'exec compile avec le bon nom
+        apprendre a rediger un Makefile en cpp (quelles differences avec C s'il y en a)
+            test1: make compile l'exec
+            test2: make compile l'exec avec le bon nom
+        (facultatif) coder le programe megaphone en C pour voir les differences.
+        Learn comment fonctionne le CPP / difference avec le C [a detailler]
+             
+
+ 
