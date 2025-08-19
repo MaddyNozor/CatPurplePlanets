@@ -13,9 +13,9 @@
 #include <iostream>
 #include <locale>
 
-# define SUCCESS 0;
+# define SUCCESS 0
 
-char    *scream_this(char *str)
+std::string    scream_this(std::string str)
 {
     int j = 0;
 
@@ -39,8 +39,8 @@ int     main(int ac, char **av)
     i = 1;
     while(av[i])
     {
-        av[i] = scream_this(av[i]);
-        std::cout << av[i++];
+        std::string sentence = av[i++];        
+        std::cout << scream_this(sentence);
     }
     std::cout << std::endl;
     return SUCCESS;
