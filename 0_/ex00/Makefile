@@ -10,3 +10,22 @@
 #                                                                              #
 # **************************************************************************** #
 
+CC = c++
+CFLAGS = -Wall -Wextra -Werror -std=c++98
+EXEC_NAME = megaphone
+SRC = main.cpp
+
+all : $(EXEC_NAME)
+
+clean :
+	rm $(EXEC_NAME)
+
+re : clean all
+
+$(EXEC_NAME) : $(SRC)
+	$(CC) $(CFLAGS) -o $(EXEC_NAME) $(SRC)
+
+#%.o: %.cpp
+#	$(CC) $(CFLAGS) $(INCLUDES) -o $@ -c $<
+
+.phony : all clean re

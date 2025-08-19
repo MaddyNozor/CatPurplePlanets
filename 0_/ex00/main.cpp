@@ -10,3 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <iostream>
+
+# define SUCCESS 0;
+
+int     main(int ac, char **av)
+{
+    int i = 1;
+
+    if (ac == 1)
+    {
+        std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
+        return SUCCESS;
+    }
+    while(av[i])
+    {
+        std::cout << av[i] << " ";
+        i++;
+    }
+    std::cout << std::endl;
+    return SUCCESS;
+}

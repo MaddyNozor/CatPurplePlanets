@@ -10,13 +10,13 @@
 #                                                                              #
 # **************************************************************************** #
 
-un executable compile manuellelemt
+un executable compile manuellelemt OK
 
-le fichier s'appelle megaphone
+le fichier s'appelle megaphone OK
 
-Un makefile permet de la compiler via make
+Un makefile permet de la compiler via make OK
 
-un exec s'ouvre en faisant des bruits (arguments ou pas)
+un exec s'ouvre en faisant des bruits (arguments ou pas) OK
 
 si un argument, tout passer en maj, terminer par un \n
 
