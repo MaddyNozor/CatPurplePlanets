@@ -12,8 +12,15 @@
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
-EXEC_NAME = phonebook
-SRC = main.cpp
+EXEC_NAME = tiny_phonebook
+SRC = Contact.class.cpp Phonebook.class.cpp main.cpp
+
+
+$(EXEC_NAME) : $(SRC)
+	$(CC) $(CFLAGS) -o $(EXEC_NAME) $(SRC)
+
+%.o: %.cpp
+	$(CC) $(CFLAGS) -o $@ -c $<
 
 all : $(EXEC_NAME)
 
@@ -21,11 +28,5 @@ clean :
 	rm $(EXEC_NAME)
 
 re : clean all
-
-$(EXEC_NAME) : $(SRC)
-	$(CC) $(CFLAGS) -o $(EXEC_NAME) $(SRC)
-
-#%.o: %.cpp
-#	$(CC) $(CFLAGS) $(INCLUDES) -o $@ -c $<
 
 .phony : all clean re
