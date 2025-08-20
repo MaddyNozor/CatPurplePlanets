@@ -1,7 +1,7 @@
 
 #include "./_Phonebook.hpp"
 
-std::string    scream_this(std::string str)
+std::string    full_caps(std::string str)
 {
     int j = 0;
 
@@ -19,12 +19,12 @@ std::string get_command ()
 
     std::cout << "What do you want to do ? [ADD] [SEARCH] [EXIT]" << std::endl;
     std::cin >> user_entry;
-    while (scream_this(user_entry) != "ADD" && scream_this(user_entry) != "SEARCH" && scream_this(user_entry) != "EXIT")
+    while (full_caps(user_entry) != "ADD" && full_caps(user_entry) != "SEARCH" && full_caps(user_entry) != "EXIT")
     {
         std::cout << "Try again, " << user_entry << " is an invalid command." << std::endl;
         std::cin >> user_entry;
     }
-    return (scream_this(user_entry));
+    return (full_caps(user_entry));
 }
 
 int main (void)
