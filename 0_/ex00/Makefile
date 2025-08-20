@@ -13,7 +13,7 @@
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 EXEC_NAME = megaphone
-SRC = main.cpp
+SRC = megaphone.cpp
 
 all : $(EXEC_NAME)
 
