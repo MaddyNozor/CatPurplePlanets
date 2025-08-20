@@ -13,7 +13,7 @@
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 EXEC_NAME = tiny_phonebook
-SRC = Contact.class.cpp Phonebook.class.cpp main.cpp
+SRC = _Contact.cpp _Phonebook.cpp main.cpp
 
 
 $(EXEC_NAME) : $(SRC)
