@@ -5,18 +5,20 @@
 class Phonebook
 {
 private:
-    Contact _spot[8];
+    Contact _contacts[8];
     int     _total_added;
 public:
 
-    Phonebook(/* args */);
+    Phonebook();
     ~Phonebook();
 
-    int &getTotal(void);     
+    int&        getTotal(void);     
+    Contact&    getContactAt(int& spot);
 
-    int     getFirstEmptySpot();
-    void    addContact(Contact &c_spot);
-    void    searchContact(Contact &c_spot);
+    void        addContact(Contact &c_spot);
+    void        searchContact(Contact &c_spot);
+    
+    int         getFirstEmptySpot();
 };
 
 

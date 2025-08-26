@@ -30,8 +30,8 @@ int main (void) {
     std::cout << "Welcome in this tiny Phonebook !" << std::endl;;
     std::string cmd = get_command();
     if (cmd == "ADD") {
-        // int spot = tiny.getTotal() % 8;
-        // tiny.addContact(*this->_spot[spot]);
+        int spot = tiny.getTotal() % 8;
+        tiny.addContact(tiny.getContactAt(spot));
     }
     if (cmd == "SEARCH")
         std::cout << "Ou est charly " << cmd << std::endl;
