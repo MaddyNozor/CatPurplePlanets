@@ -1,18 +1,21 @@
 
 #include "./_Contact.hpp"
 
-Contact::Contact(void)
-{
+Contact::Contact(void) {
     std::cout << "Call Contact Constructor" << std::endl;
     this->_id = 42;
 }
 
-Contact::~Contact(void)
-{
+Contact::~Contact(void) {
     std::cout << "Destroy Contact " << this->_id << std::endl;
 }
 
 //==================SET==================
+
+int Contact::setID(int entry) {
+    this->_id = entry;
+    return SUCCESS ;
+}
 
 int Contact::setFirstName(std::string entry) {
     this->_firstname = entry;

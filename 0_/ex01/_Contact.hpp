@@ -20,13 +20,14 @@ class Contact
         Contact(void);
         ~Contact(void);
 
+        int setID(int entry);
         int setFirstName(std::string entry);
         int setLastName(std::string entry);
         int setNickName(std::string entry);
         int setPhoneNumber(std::string entry);
         int setDarkestSecret(std::string entry);
 
-        int &getID(void);
+        int         &getID(void);
         std::string &getFirstName(void);
         std::string &getLastName(void);
         std::string &getNickname(void);

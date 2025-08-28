@@ -1,5 +1,7 @@
 
 #include <iostream>
+#include <iomanip>
+#include <cstring>
 #include "./_Contact.hpp"
 
 #define NAME 10
@@ -16,14 +18,14 @@ public:
     Phonebook();
     ~Phonebook();
 
-    int&        getTotal(void);     
-    Contact&    getContactAt(int spot);
+    int        &getTotal(void);     
+    Contact    &getContactAt(int spot);
 
-    void        newContact(Contact &c);
-    void        addContact(Contact &c);
-    void        searchContact(Contact &c);
+    void        newContact(Contact &c, int spot);
+    void        searchContact();
     
-    int         checkEntry(std::string entry, int type);
+    std::string truncToTen(std::string entry);
+    int         checkEntry(std::string entry, int type);        
     int         getFirstEmptySpot();
 };
 

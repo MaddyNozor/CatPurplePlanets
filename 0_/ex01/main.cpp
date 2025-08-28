@@ -32,10 +32,12 @@ int main (void) {
     while (cmd != "EXIT") {
         if (cmd == "ADD") {
             int spot = tiny.getTotal() % 8;
-            tiny.newContact(tiny.getContactAt(spot));
+            tiny.newContact(tiny.getContactAt(spot), spot);
         }
-        else if (cmd == "SEARCH")
-            std::cout << "Ou est charly " << cmd << std::endl;
+        else if (cmd == "SEARCH") {
+            std::cout << "[SEARCH] case " << cmd << std::endl;
+            tiny.searchContact();
+        }
         cmd = get_command();
     }
     std::cout << "bye bye " << cmd << std::endl;
