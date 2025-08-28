@@ -29,13 +29,15 @@ int main (void) {
     
     std::cout << "Welcome in this tiny Phonebook !" << std::endl;;
     std::string cmd = get_command();
-    if (cmd == "ADD") {
-        int spot = tiny.getTotal() % 8;
-        tiny.addContact(tiny.getContactAt(spot));
+    while (cmd != "EXIT") {
+        if (cmd == "ADD") {
+            int spot = tiny.getTotal() % 8;
+            tiny.newContact(tiny.getContactAt(spot));
+        }
+        else if (cmd == "SEARCH")
+            std::cout << "Ou est charly " << cmd << std::endl;
+        cmd = get_command();
     }
-    if (cmd == "SEARCH")
-        std::cout << "Ou est charly " << cmd << std::endl;
-    if (cmd == "EXIT")
-        std::cout << "bye bye " << cmd << std::endl;
-    return 0;
+    std::cout << "bye bye " << cmd << std::endl;
+    return SUCCESS;
 }

@@ -1,8 +1,11 @@
 
 #include <iostream>
+#include <cctype>
 
 #define SUCCESS 0
 #define FAIL 1
+#define EMPTY 2
+#define FORBID 3
 
 class Contact
 {
