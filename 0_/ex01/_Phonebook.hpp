@@ -18,8 +18,9 @@ public:
     Phonebook();
     ~Phonebook();
 
-    int        &getTotal(void);     
-    Contact    &getContactAt(int spot);
+    int         &getTotal(void); 
+    int         &increaseTotal(void);    
+    Contact     &getContactAt(int spot);
 
     void        newContact(Contact &c, int spot);
     void        searchContact();

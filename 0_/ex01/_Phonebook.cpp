@@ -27,6 +27,11 @@ int     &Phonebook::getTotal() {
     return(this->_total_added);
 }
 
+int     &Phonebook::increaseTotal() {
+    this->_total_added++;
+    return(this->_total_added);
+}
+
 Contact &Phonebook::getContactAt(int spot) {
     return (_contacts[spot]);
 }
@@ -86,6 +91,7 @@ void    Phonebook::newContact(Contact &c, int spot) {
 
     c = new_c;
     new_c.setID(42);
+    increaseTotal();
     //std::cout << c.getID() << " <- ID / firstname -> " << c.getFirstName() << std::endl;
 
     return;
@@ -111,8 +117,12 @@ int     Phonebook::checkEntry(std::string entry, int type) {
 //============= [SEARCH] =====================
 
 std::string Phonebook::truncToTen(std::string entry) {
-    if (std::strlen(entry) > 10) {
-        return("lulz");
+    if (entry.length() > 10) {
+        std::string trunc_entry = "0123456789";
+        for(int i = 0; i <= 8; i++)
+            trunc_entry[i] = entry[i];
+        trunc_entry[9] = '.';
+        return(trunc_entry);
     }
     return (entry);
 }
@@ -128,10 +138,10 @@ void Phonebook::searchContact() {
               << std::setw(10) << "Last Name" << " | "
               << std::setw(10) << "Nickname" << std::endl;
     std::cout << "---------- | ---------- | ---------- | ----------" << std::endl;
-    for (int i = 0; (i <= getTotal() && i <= 7); i++) {
+    for (int i = 0; (i < getTotal() && i <= 7); i++) {
         std::string first = truncToTen(_contacts[i].getFirstName());
-        std::string last = _contacts[i].getLastName();
-        std::string nick = _contacts[i].getNickname();
+        std::string last = truncToTen(_contacts[i].getLastName());
+        std::string nick = truncToTen(_contacts[i].getNickname());
         std::cout << std::setw(10) << i << " | "
             << std::setw(10) << first << " | "
             << std::setw(10) << last << " | "
