@@ -16,13 +16,6 @@ Phonebook::~Phonebook() {
 
 //============= GETTERS ====================
 
-int     Phonebook::getFirstEmptySpot() {
-    int res = 0;
-    while ( this->_contacts[res].getID() != 42)
-        res++;
-    return res;
-}
-
 int     &Phonebook::getTotal() {
     return(this->_total_added);
 }
@@ -92,7 +85,6 @@ void    Phonebook::newContact(Contact &c, int spot) {
     c = new_c;
     new_c.setID(42);
     increaseTotal();
-    //std::cout << c.getID() << " <- ID / firstname -> " << c.getFirstName() << std::endl;
 
     return;
 }
@@ -105,6 +97,7 @@ int     Phonebook::checkEntry(std::string entry, int type) {
     for (int i = 0; entry[i]; i++) {
         if (!std::isprint(entry[i])
             || (type == PHONE_NUMBER && !std::isdigit(entry[i]))
+            || (type == LASTNAME && (!std::isalpha(entry[i]) && entry[i] != ' ' && entry[i] != '\'' && entry[i] != '-'))
             || (type == NAME && (!std::isalpha(entry[i]) && entry[i] != '\'' && entry[i] != '-'))
             ) {
                 std::cout << "[Forbidden character] in [";
@@ -142,13 +135,57 @@ void Phonebook::searchContact() {
         std::string first = truncToTen(_contacts[i].getFirstName());
         std::string last = truncToTen(_contacts[i].getLastName());
         std::string nick = truncToTen(_contacts[i].getNickname());
-        std::cout << std::setw(10) << i << " | "
-            << std::setw(10) << first << " | "
-            << std::setw(10) << last << " | "
-            << std::setw(10) << nick << std::endl;
+
+        std::cout << std::left << std::setw(10) << i << " | "
+            << std::left << std::setw(10) << first << " | "
+            << std::left << std::setw(10) << last << " | "
+            << std::left << std::setw(10) << nick << std::endl;
     }
-    std::cout << "==================================================" << std::endl; 
-    // while (getFirst)
+    std::cout << "==================================================" << std::endl;
+
+    std::string entry_user;
+    std::cout << "Select one of the ID above to see its data : [one digit]" << std::endl;
+    std::getline(std::cin, entry_user);
+    while (Phonebook::checkID(entry_user) != SUCCESS) {
+        std::cout << " detected. Please respect the requirements." << std::endl;
+        std::cout << "Contact ID ? [0 to 7 if registered]" << std::endl;
+        std::getline(std::cin, entry_user);
+    }
+    Contact &target = getContactAt(std::atoi(entry_user.c_str()));
+    printContactData(target);
+
+    std::cout << "==================================================" << std::endl;
+    return;
+}
+
+void    Phonebook::printContactData(Contact &target) {
+    std::cout << "Firstname : " << target.getFirstName() << std::endl;
+    std::cout << "Lastname : " << target.getLastName() << std::endl;
+    std::cout << "Nickname : " << target.getNickname() << std::endl;
+    std::cout << "Phone Number : " << target.getPhoneNumber() << std::endl;
+    std::cout << "Darkest Secret : " << target.getDarkestSecret() << std::endl;
+    return;
+}
+
+int     Phonebook::checkID(const std::string entry) {
+    if (entry.empty()) {
+        std::cout << "[EMPTY STRING]";
+        return (EMPTY);
+    }
+    else if (entry.length() != 1 ) {
+        std::cout << "[TOO MANY CHAR]";
+        return (FAIL);
+    }
+    else if  (!std::isdigit(entry[0])) {
+        std::cout << "[FORBIDDEN CHAR]";
+        return (FORBID);
+    }
+    int max = getTotal();
+    if (std::atoi(entry.c_str()) > max || std::atoi(entry.c_str()) > 7) {
+        std::cout << "[UNREGISTERED ID]";
+        return (FAIL);
+    }
+    return(SUCCESS);
 }
 
 /*

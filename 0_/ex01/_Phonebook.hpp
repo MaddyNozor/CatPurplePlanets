@@ -2,9 +2,11 @@
 #include <iostream>
 #include <iomanip>
 #include <cstring>
+#include <cstdlib>
 #include "./_Contact.hpp"
 
 #define NAME 10
+#define LASTNAME 13
 #define PHONE_NUMBER 11
 #define STD 12
 
@@ -23,11 +25,13 @@ public:
     Contact     &getContactAt(int spot);
 
     void        newContact(Contact &c, int spot);
-    void        searchContact();
-    
     std::string truncToTen(std::string entry);
     int         checkEntry(std::string entry, int type);        
-    int         getFirstEmptySpot();
+
+    void        searchContact();
+    int         checkID(const std::string entry);
+    void        printContactData(Contact &target);
+
 };
 
 

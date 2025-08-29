@@ -16,7 +16,7 @@ std::string get_command (void) {
     std::string user_entry;
 
     std::cout << "What do you want to do ? [ADD] [SEARCH] [EXIT]" << std::endl;
-    std::cin >> user_entry;
+    std::getline(std::cin, user_entry);
     while (full_caps(user_entry) != "ADD" && full_caps(user_entry) != "SEARCH" && full_caps(user_entry) != "EXIT") {
         std::cout << "Try again, " << user_entry << " is an invalid command." << std::endl;
         std::cin >> user_entry;
@@ -27,6 +27,7 @@ std::string get_command (void) {
 int main (void) {
     Phonebook   tiny;
     
+    std::cout << "==================================================" << std::endl;
     std::cout << "Welcome in this tiny Phonebook !" << std::endl;;
     std::string cmd = get_command();
     while (cmd != "EXIT") {
@@ -35,11 +36,12 @@ int main (void) {
             tiny.newContact(tiny.getContactAt(spot), spot);
         }
         else if (cmd == "SEARCH") {
-            std::cout << "[SEARCH] case " << cmd << std::endl;
             tiny.searchContact();
         }
         cmd = get_command();
     }
-    std::cout << "bye bye " << cmd << std::endl;
+    std::cout << "==================================================" << std::endl;
+    std::cout << "EXIT : All data successfully erased. Have a nice day ! :)" << std::endl;
+    std::cout << "==================================================" << std::endl;
     return SUCCESS;
 }
