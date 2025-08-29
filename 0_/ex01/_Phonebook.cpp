@@ -5,7 +5,7 @@ Phonebook::Phonebook() {
     _total_added = 0;
     for (int i = 0; i <= 7; i++) {
         _contacts[i].setID(i); 
-        std::cout << "New Contact ID: " << _contacts[i].getID() << std::endl;
+        //std::cout << "New Contact ID: " << _contacts[i].getID() << std::endl;
         }
     std::cout << "Call Phonebook Constructor" << std::endl;
 }
@@ -39,46 +39,56 @@ void    Phonebook::newContact(Contact &c, int spot) {
 
     std::cout << "FirstName ? [only letters/'/-]" << std::endl;
     std::getline(std::cin, entry_user);
+    if (std::cin.eof()) { exit(FAIL); }
     while (Phonebook::checkEntry(entry_user, NAME) != SUCCESS) {
             std::cout << entry_user << "] detected. Please respect the requirements." << std::endl;
             std::cout << "FirstName ? [only letters/'/-]" << std::endl;
             std::getline(std::cin, entry_user);
+            if (std::cin.eof()) { exit(FAIL); }
     }
     new_c.setFirstName(entry_user);
 
-    std::cout << "Lastname ? [only letters/'/-]" << std::endl;
+    std::cout << "Lastname ? [only letters/ /'/-]" << std::endl;
     std::getline(std::cin, entry_user);
-    while (Phonebook::checkEntry(entry_user, NAME) != SUCCESS) {
-            std::cout << entry_user << " detected. Please respect the requirements." << std::endl;
-            std::cout << "Lastname ? [only letters/'/-]" << std::endl;
+    if (std::cin.eof()) { exit(FAIL); }
+    while (Phonebook::checkEntry(entry_user, LASTNAME) != SUCCESS) {
+            std::cout << entry_user << "] detected. Please respect the requirements." << std::endl;
+            std::cout << "Lastname ? [only letters/ /'/-]" << std::endl;
             std::getline(std::cin, entry_user);
+            if (std::cin.eof()) { exit(FAIL); }
     }
     new_c.setLastName(entry_user);
 
     std::cout << "Nickname ?" << std::endl;
     std::getline(std::cin, entry_user);
+    if (std::cin.eof()) { exit(FAIL); }
     while (Phonebook::checkEntry(entry_user, STD) != SUCCESS) {
-            std::cout << entry_user << " detected. Please respect the requirements." << std::endl;
+            std::cout << entry_user << "] detected. Please respect the requirements." << std::endl;
             std::cout << "Nickname ? [only letters/'/-]" << std::endl;
             std::getline(std::cin, entry_user);
+            if (std::cin.eof()) { exit(FAIL); }
     }
     new_c.setNickName(entry_user);
 
     std::cout << "Phone Number ? [only digits]" << std::endl;
     std::getline(std::cin, entry_user);
+    if (std::cin.eof()) { exit(FAIL); }
     while (Phonebook::checkEntry(entry_user, PHONE_NUMBER) != SUCCESS) {
-            std::cout << entry_user << " detected. Please respect the requirements." << std::endl;
+            std::cout << entry_user << "] detected. Please respect the requirements." << std::endl;
             std::cout << "Phone Number ? [only digits] " << std::endl;
             std::getline(std::cin, entry_user);
+            if (std::cin.eof()) { exit(FAIL); }
     }
     new_c.setPhoneNumber(entry_user);
 
     std::cout << "Darkest Secret ?" << std::endl;
     std::getline(std::cin, entry_user);
+    if (std::cin.eof()) { exit(FAIL); }
     while (Phonebook::checkEntry(entry_user, STD) != SUCCESS) {
-            std::cout << entry_user << " detected. Please respect the requirements." << std::endl;
+            std::cout << entry_user << "] detected. Please respect the requirements." << std::endl;
             std::cout << "Darkest Secret ? " << std::endl;
             std::getline(std::cin, entry_user);
+            if (std::cin.eof()) { exit(FAIL); }
     }
     new_c.setDarkestSecret(entry_user);
 
@@ -146,10 +156,12 @@ void Phonebook::searchContact() {
     std::string entry_user;
     std::cout << "Select one of the ID above to see its data : [one digit]" << std::endl;
     std::getline(std::cin, entry_user);
+    if (std::cin.eof()) { exit(FAIL); }
     while (Phonebook::checkID(entry_user) != SUCCESS) {
         std::cout << " detected. Please respect the requirements." << std::endl;
         std::cout << "Contact ID ? [0 to 7 if registered]" << std::endl;
         std::getline(std::cin, entry_user);
+        if (std::cin.eof()) { exit(FAIL); }
     }
     Contact &target = getContactAt(std::atoi(entry_user.c_str()));
     printContactData(target);
@@ -181,7 +193,7 @@ int     Phonebook::checkID(const std::string entry) {
         return (FORBID);
     }
     int max = getTotal();
-    if (std::atoi(entry.c_str()) > max || std::atoi(entry.c_str()) > 7) {
+    if (std::atoi(entry.c_str()) > (max -1) || std::atoi(entry.c_str()) > 7) {
         std::cout << "[UNREGISTERED ID]";
         return (FAIL);
     }

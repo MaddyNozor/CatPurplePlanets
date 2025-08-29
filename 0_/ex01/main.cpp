@@ -17,6 +17,7 @@ std::string get_command (void) {
 
     std::cout << "What do you want to do ? [ADD] [SEARCH] [EXIT]" << std::endl;
     std::getline(std::cin, user_entry);
+    if (std::cin.eof()) { exit(FAIL); }
     while (full_caps(user_entry) != "ADD" && full_caps(user_entry) != "SEARCH" && full_caps(user_entry) != "EXIT") {
         std::cout << "Try again, " << user_entry << " is an invalid command." << std::endl;
         std::cin >> user_entry;
@@ -45,3 +46,13 @@ int main (void) {
     std::cout << "==================================================" << std::endl;
     return SUCCESS;
 }
+
+/*
+Protection CTRL + D cin eof
+valgrind
+
+Phone Number ? [only digits]
+e
+[Forbidden character] in [e detected. Please respect the requirements.
+
+*/
