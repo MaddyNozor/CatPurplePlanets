@@ -6,7 +6,7 @@
 #    By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/01 17:01:30 by mairivie          #+#    #+#              #
-#    Updated: 2025/08/29 17:33:16 by mairivie         ###   ########.fr        #
+#    Updated: 2025/08/29 18:21:42 by mairivie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ $(EXEC_NAME) : $(SRC)
 all : $(EXEC_NAME)
 
 clean :
-	rm $(EXEC_NAME)
+	rm -f $(EXEC_NAME)
 
 re : clean all
 
