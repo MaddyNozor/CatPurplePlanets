@@ -129,7 +129,7 @@ void Phonebook::searchContact() {
               << std::setw(10) << "Nickname" << std::endl;
     std::cout << "---------- | ---------- | ---------- | ----------" << std::endl;
     for (int i = 0; (i <= getTotal() && i <= 7); i++) {
-        std::string first = _contacts[i].getFirstName();
+        std::string first = truncToTen(_contacts[i].getFirstName());
         std::string last = _contacts[i].getLastName();
         std::string nick = _contacts[i].getNickname();
         std::cout << std::setw(10) << i << " | "
