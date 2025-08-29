@@ -6,7 +6,7 @@
 #    By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/01 17:01:30 by mairivie          #+#    #+#              #
-#    Updated: 2025/08/28 15:30:50 by mairivie         ###   ########.fr        #
+#    Updated: 2025/08/29 17:33:16 by mairivie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 EXEC_NAME = tiny_phonebook
 SRC = _Contact.cpp _Phonebook.cpp main.cpp
-
+#OBJ = $(SRC:.cpp = .o)
 
 $(EXEC_NAME) : $(SRC)
 	$(CC) $(CFLAGS) -o $(EXEC_NAME) $(SRC)
