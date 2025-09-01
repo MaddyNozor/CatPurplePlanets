@@ -6,11 +6,12 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 11:17:33 by mairivie          #+#    #+#             */
-/*   Updated: 2025/09/01 13:30:53 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/09/01 17:06:07 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream> //
+#include <string> //
 #include <cctype> //
 
 // ===== COLORS & LAYOUT =====
@@ -48,6 +49,7 @@ private:
     std::string _name;
 public:
     Zombie(void);
+    Zombie(std::string entry);
     ~Zombie(void);
 
     int         setName(std::string entry);
