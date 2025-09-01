@@ -18,7 +18,7 @@ SRC = megaphone.cpp
 all : $(EXEC_NAME)
 
 clean :
-	rm $(EXEC_NAME)
+	rm -f $(EXEC_NAME)
 
 re : clean all
 
