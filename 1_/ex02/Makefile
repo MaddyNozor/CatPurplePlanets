@@ -29,4 +29,4 @@ clean :
 
 re : clean all
 
-.phony : all clean re
+.PHONY : all clean re

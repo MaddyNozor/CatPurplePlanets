@@ -28,4 +28,4 @@ $(EXEC_NAME) : $(SRC)
 #%.o: %.cpp
 #	$(CC) $(CFLAGS) $(INCLUDES) -o $@ -c $<
 
-.phony : all clean re
+.PHONY : all clean re
