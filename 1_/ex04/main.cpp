@@ -6,8 +6,7 @@ static std::string replaceAll(const std::string &content,
                               const std::string &s1,
                               const std::string &s2) {
     if (s1.empty())
-        return content; // éviter boucle infinie
-
+        return content; 
     std::string result;
     size_t pos = 0;
     size_t found;
@@ -38,7 +37,7 @@ int main(int argc, char **argv) {
     std::string line;
     while (std::getline(inFile, line)) {
         content.append(line);
-        content.push_back('\n'); // conserver les retours à la ligne
+        content.push_back('\n'); 
     }
     inFile.close();
 
