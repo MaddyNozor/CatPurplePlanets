@@ -6,7 +6,7 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 14:34:25 by mairivie          #+#    #+#             */
-/*   Updated: 2025/09/05 15:03:44 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/09/05 15:43:33 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ int main(int argc, char **argv) {
     std::string s1 = argv[2];
     std::string s2 = argv[3];
     
+    //ft get file content
     std::ifstream inFile(filename.c_str());
     if (!inFile) {
         std::cout << "Error: cannot " << filename << std::endl;
         return (EXIT_FAIL);
     }
-
     std::string content;
     std::string line;
     while (std::getline(inFile, line)) {
@@ -40,14 +40,17 @@ int main(int argc, char **argv) {
     }
     inFile.close();
 
-    std::string replaced = find_and_substitute_s1_by_s2(content, argv[2], argv[3]);
 
+    
+    std::string new_content = find_and_substitute_s1_by_s2(content, s1, s2);
+
+    // create new file
     std::ofstream outFile((filename + ".replace").c_str());
     if (!outFile) {
         std::cout << "Error: cannot create output file." << std::endl;
         return (EXIT_FAIL);
     }
-    outFile << replaced;
+    outFile << new_content;
     outFile.close();
 
     return (EXIT_SUCCESS);
