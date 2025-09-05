@@ -1,36 +1,35 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/05 14:34:25 by mairivie          #+#    #+#             */
+/*   Updated: 2025/09/05 15:03:44 by mairivie         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
 #include <fstream>
 #include <string>
-
-static std::string replaceAll(const std::string &content,
-                              const std::string &s1,
-                              const std::string &s2) {
-    if (s1.empty())
-        return content; 
-    std::string result;
-    size_t pos = 0;
-    size_t found;
-
-    while ((found = content.find(s1, pos)) != std::string::npos) {
-        result.append(content.substr(pos, found - pos));
-        result.append(s2);
-        pos = found + s1.length();
-    }
-    result.append(content.substr(pos));
-    return result;
-}
+#include "string_substitution.hpp"  
 
 int main(int argc, char **argv) {
+    
     if (argc != 4) {
-        std::cerr << "Usage: " << argv[0] << " <filename> <s1> <s2>" << std::endl;
-        return 1;
+        std::cout << RED << argv[0] << " needs <filename> <s1> <s2>" << RESET << std::endl;
+        return (EXIT_FAIL);
     }
 
     std::string filename = argv[1];
+    std::string s1 = argv[2];
+    std::string s2 = argv[3];
+    
     std::ifstream inFile(filename.c_str());
     if (!inFile) {
-        std::cerr << "Error: cannot open input file." << std::endl;
-        return 1;
+        std::cout << "Error: cannot " << filename << std::endl;
+        return (EXIT_FAIL);
     }
 
     std::string content;
@@ -41,15 +40,15 @@ int main(int argc, char **argv) {
     }
     inFile.close();
 
-    std::string replaced = replaceAll(content, argv[2], argv[3]);
+    std::string replaced = find_and_substitute_s1_by_s2(content, argv[2], argv[3]);
 
     std::ofstream outFile((filename + ".replace").c_str());
     if (!outFile) {
-        std::cerr << "Error: cannot create output file." << std::endl;
-        return 1;
+        std::cout << "Error: cannot create output file." << std::endl;
+        return (EXIT_FAIL);
     }
     outFile << replaced;
     outFile.close();
 
-    return 0;
+    return (EXIT_SUCCESS);
 }
