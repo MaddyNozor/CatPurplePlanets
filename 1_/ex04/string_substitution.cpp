@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_replace.cpp                                     :+:      :+:    :+:   */
+/*   string_substitution.cpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 14:49:58 by mairivie          #+#    #+#             */
-/*   Updated: 2025/09/05 19:09:04 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/09/08 11:58:53 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 std::string find_and_substitute_s1_by_s2(std::string &content, std::string &s1, std::string &s2) {
     std::string result;
     size_t start_pos = 0;
-    size_t pos_s2_found;
+    size_t pos_s2_found = 0;
     
     if (s1.empty())
         return content;

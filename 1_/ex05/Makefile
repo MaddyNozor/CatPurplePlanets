@@ -6,13 +6,13 @@
 #    By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/05 11:34:27 by mairivie          #+#    #+#              #
-#    Updated: 2025/09/05 13:41:11 by mairivie         ###   ########.fr        #
+#    Updated: 2025/09/08 12:01:15 by mairivie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
-EXEC_NAME = simon_says
+EXEC_NAME = harl_says
 SRC = main.cpp Harl.cpp
 #OBJ = $(SRC:.cpp = .o)
 

@@ -6,53 +6,32 @@
 #    By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/02 12:38:51 by mairivie          #+#    #+#              #
-#    Updated: 2025/09/05 11:33:27 by mairivie         ###   ########.fr        #
+#    Updated: 2025/09/08 12:32:38 by mairivie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98
-EXEC_NAME = peace_n_love
-SRC = main.cpp
-#OBJ = $(SRC:.cpp = .o)
+CPP = c++
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98
+NAME = peace_n_love
+SRCS = main.cpp Weapon.cpp HumanA.cpp HumanB.cpp
+OBJ_DIR = obj
+OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.cpp=.o))
 
-$(EXEC_NAME) : $(SRC)
-	$(CC) $(CFLAGS) -o $(EXEC_NAME) $(SRC)
+all: $(NAME)
 
-%.o: %.cpp
-	$(CC) $(CFLAGS) -o $@ -c $<
+$(NAME): $(OBJS)
+	$(CPP) $(CPPFLAGS) $(OBJS) -o $(NAME)
 
-all : $(EXEC_NAME)
+$(OBJ_DIR)/%.o: %.cpp
+	@if [ ! -d obj ]; then mkdir -p $(@D); echo "mkdir -p $(@D)" ; fi
+	$(CPP) $(CPPFLAGS) -c $< -o $@
 
-clean :
-	rm -f $(EXEC_NAME)
+clean:
+	@if [ -d obj ]; then rm -r obj; echo "rm -r obj" ; fi
 
-re : clean all
-
-.PHONY : all clean re
-
-
-#NAME      = unnecessary_violence
-#CXX       = c++
-#CXXFLAGS  = -Wall -Wextra -Werror -std=c++98
-
-#SRCS = main.cpp \       Weapon.cpp \       HumanA.cpp \       HumanB.cpp
-#OBJS = $(SRCS:.cpp=.o)
-
-#all: $(NAME)
-
-#$(NAME): $(OBJS)
-	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
-
-#%.o: %.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
-
-#clean:
-	rm -f $(OBJS)
-
-#fclean: clean
+fclean: clean
 	rm -f $(NAME)
 
-#re: fclean all
+re: fclean all
 
-#.PHONY: all clean fclean re
+.PHONY: all clean fclean re
