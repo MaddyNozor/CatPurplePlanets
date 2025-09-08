@@ -6,7 +6,7 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 11:16:27 by mairivie          #+#    #+#             */
-/*   Updated: 2025/09/01 17:20:50 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/09/08 17:50:08 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int main(void) {
     std::cout << YELLOW << "\nMain: Test Empty Name" << RESET << std::endl;
     randomChump("");
     
-    std::cout << YELLOW << "\nMain: What happens if Z raised in main ?" << RESET << std::endl;
+    std::cout << YELLOW << "\nMain: What happens if Zombie raised in main ?" << RESET << std::endl;
     Zombie  test("Bob");
     
     std::cout << YELLOW << "\nEnd of Main." << RESET << std::endl;

@@ -6,7 +6,7 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 14:19:12 by mairivie          #+#    #+#             */
-/*   Updated: 2025/09/08 16:36:57 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/09/08 17:19:13 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 HumanB::HumanB(const std::string &name)
     : _name(name) {
+        //-this + weapon NULL
         this->_weapon = NULL;
         std::cout << BLUE << "Constructor B called " << RESET << std::endl;
     }

@@ -6,7 +6,7 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 14:49:58 by mairivie          #+#    #+#             */
-/*   Updated: 2025/09/08 11:58:53 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/09/08 17:37:28 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ std::string getFileContent(std::string filename) {
     std::string line;
     while (std::getline(file_src, line)) {
         file_content.append(line);
-        file_content.push_back('\n'); 
+        if(!file_src.eof())
+            file_content.push_back('\n'); 
     }
     file_src.close();
     return (file_content);

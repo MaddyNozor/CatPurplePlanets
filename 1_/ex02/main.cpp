@@ -6,7 +6,7 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 12:40:07 by mairivie          #+#    #+#             */
-/*   Updated: 2025/09/02 18:12:05 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/09/08 17:15:51 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int main(void) {
     std::string string = "HI THIS IS BRAIN";
     std::string *stringPTR = &string;
     std::string &stringREF = string;
-    
+
     std::cout << "---------------------------------------------------------------" << std::endl;
     
     std::cout << std::setw(40) << "Memory address of the string variable: " << &string << std::endl;

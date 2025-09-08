@@ -6,7 +6,7 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 14:34:25 by mairivie          #+#    #+#             */
-/*   Updated: 2025/09/05 19:12:40 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/09/08 17:47:31 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,3 +29,10 @@ int main(int argc, char **argv) {
 
     return (EXIT_SUCCESS);
 }
+
+// int namefile; //use f2
+// echo "your_text_here" > namefile && cat -e namefile
+// ./sed_is_for_losers namefile "im_looking_for_that" "use_this_instead" && cat -e namefile.replace
+
+// echo "[your_text_here]" > sample.txt && cat -e sample.txt
+// ./sed_is_for_losers sample.txt "_" "-xXx-"" && cat -e sample.txt.replace
