@@ -1,0 +1,32 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    correctips.txt                                     :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/09/08 11:27:10 by mairivie          #+#    #+#              #
+#    Updated: 2025/09/08 11:36:49 by mairivie         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+Makefile :
+c++ pas g++
+nom de l'exec
+
+C00 :
+chaine vide
+comportement avec plusieurs args (results == test du sujet)
+
+C01
+Private/Public
+Tout ce qui n'est pas necessaire en public doit etre mis en Private
+(variables ofc, mais aussi les methodes)
+
+protection du ctrl+d
+Valgrind + ctrl+d
+
+tests contacts reels
+Verif message d'erreur adaptes
+
+
