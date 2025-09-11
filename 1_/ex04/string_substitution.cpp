@@ -6,7 +6,7 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 14:49:58 by mairivie          #+#    #+#             */
-/*   Updated: 2025/09/08 17:37:28 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/09/09 14:19:23 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ std::string getFileContent(std::string filename) {
     std::ifstream file_src(filename.c_str());
     if (!file_src) {
         std::cout << "Error: cannot open or read in " << filename << std::endl;
+        return "";
     }
     std::string file_content;
     std::string line;

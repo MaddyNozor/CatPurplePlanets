@@ -6,7 +6,7 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 14:19:48 by mairivie          #+#    #+#             */
-/*   Updated: 2025/09/08 16:49:30 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/09/09 14:11:35 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ int main() {
     std::cout << GREEN << "Splash's type is" << splash.getType() << RESET << std::endl;
     std::cout << "It's not very effective \n" << splash.getType() << RESET << std::endl;
     
-    Weapon elec_skill = Weapon("Thunder Cage");
+    Weapon elec_skill("Thunder Cage");
     std::cout << YELLOW << "Basic electric attack is " << elec_skill.getType() << RESET << std::endl;
     
     std::cout << "\n Pikachu, I choose you!" << std::endl;
-    //HumanA pichu("Pika");
+    // HumanA pichu("Pika");
     HumanA pikachu("Pika", elec_skill);
     pikachu.attack();
     elec_skill.setType("Thunderbolt");
@@ -33,7 +33,7 @@ int main() {
 
     std::cout << "\n Eevee ! Go !" << std::endl;
     HumanB eevee("Eevee");
-    //HumanB jolteon("jolteon", elec_skill);
+    // HumanB jolteon("jolteon", elec_skill);
     eevee.attack();
     std::cout << "You give eevee a thunder stone" << std::endl;
     std::cout << YELLOW << "Your eevee is now a jolteon and learn elec_skill" << RESET << std::endl;

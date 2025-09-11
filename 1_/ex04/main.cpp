@@ -6,7 +6,7 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 14:34:25 by mairivie          #+#    #+#             */
-/*   Updated: 2025/09/08 17:47:31 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/09/09 14:20:05 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int main(int argc, char **argv) {
     std::string s2 = argv[3];
     
     std::string content = getFileContent(filename);
+    if(content.empty())
+        return(EXIT_FAIL);
     std::string new_content = find_and_substitute_s1_by_s2(content, s1, s2);
     putContentInNewFile( filename, new_content);
 
