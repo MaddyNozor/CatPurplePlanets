@@ -1,0 +1,60 @@
+003 Heriatage
+
+private:
+    string name;
+    int hit_point = 10;
+    int nrg_point = 10; // mana
+    int att_dmg = 0;
+
+public:
+    constr();
+    constr(name);
+    copy
+    ~ destr
+
+    std::string& getName()
+    &int getHitPoint()
+    &int getNrgPoint()
+    &int getAttDmg()
+
+    void attack(const std::string& target);
+    void takeDamage(unsigned int amount);
+    void beRepaired(unsigned int amount);
+
+
+
+
+-----------in .cpp
+
+
+    const &string getName() const {
+        return this->_name;
+    }
+
+    const &int getHitPoint() const {
+        return this->_hit;
+    }
+
+    const &int getNrgPoint() const {
+        return this->_nrg;
+    }
+
+    const &int getAttDmg() const {
+        return this->_dmg;
+    }
+
+    void attack(const std::string& target) {
+        std::cout << "ClapTrap " << getName() << " attacks " << target << ", causing " << getAttDmg() << " points of damage !"  << std::endl;
+    }
+
+    void takeDamage(unsigned int amount){
+        std::cout << "ClapTrap " << getName() << " takes " << amount << " damage, loosing " << getAttDmg() << " points of damage !"  << std::endl;
+
+    }
+
+    void beRepaired(unsigned int amount){
+        std::cout << "ClapTrap " << getName() << " attacks " << target << ", causing " << getAttDmg() << " points of damage !"  << std::endl;
+
+    }
+
+    todo: stdout un int est_ce que ca se fait ?
