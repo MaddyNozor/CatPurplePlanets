@@ -6,7 +6,7 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 17:05:07 by mairivie          #+#    #+#             */
-/*   Updated: 2025/09/11 19:32:50 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/09/24 14:37:27 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,13 @@ Fixed &Fixed::operator=(const Fixed &toCopy) {
     return *this;
 }
 
-// void Fixed::operator<<(const Fixed &toInsert, std::cout [comment traduire ca ?] ) {
-//    Fixed::toInsert.toFloat()   
-// }
+std::ostream &operator<< (const Fixed &toInsert); {
+    float   res;
+    
+   res = toInsert.toFloat();
+   std::cout << res;   
+   
+}
 
 // ==== METHODS ====
 
@@ -74,9 +78,12 @@ void Fixed::setRawBits( int const raw ) {
 // ne pas avoir droit a << car surcharge operateur
 float Fixed::toFloat( void ) const {
     float   result;
-    //_(float)raw_bits / 2^deci_bits)
+    int     tmp;
+    
+    result = (float) _raw_bits / (1 << 8);
+    //result = tmp << 8 ;
     // droit a fonction puissance ? ( pow(2, n) pour 2^n )
-    //protect contre les overflows ?
+    // protect contre les overflows ?
     return (result);
 }
 

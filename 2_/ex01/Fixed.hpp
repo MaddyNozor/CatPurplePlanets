@@ -6,7 +6,7 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 17:05:10 by mairivie          #+#    #+#             */
-/*   Updated: 2025/09/11 19:33:58 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/09/24 14:36:50 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ public:
     ~Fixed();
     
     Fixed   &operator=(const Fixed &toCopy);
-    // void    operator<<(const Fixed &toInsert);
+    std::ostream &operator<< (const Fixed &toInsert);
 
     int getRawBits(void) const;
     void setRawBits( int const raw );

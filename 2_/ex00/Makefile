@@ -6,14 +6,14 @@
 #    By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/09 17:05:17 by mairivie          #+#    #+#              #
-#    Updated: 2025/09/11 18:11:53 by mairivie         ###   ########.fr        #
+#    Updated: 2025/09/24 13:54:28 by mairivie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CPP       = c++
 CPPFLAGS  = -Wall -Wextra -Werror -std=c++98
 
-NAME = a.out
+NAME = fixed
 SRCS = main.cpp Fixed.cpp
 OBJ_DIR = obj
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.cpp=.o))
