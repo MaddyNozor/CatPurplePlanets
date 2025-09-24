@@ -6,7 +6,7 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 17:05:10 by mairivie          #+#    #+#             */
-/*   Updated: 2025/09/24 14:36:50 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/09/24 16:26:33 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,14 +61,15 @@ public:
     ~Fixed();
     
     Fixed   &operator=(const Fixed &toCopy);
-    std::ostream &operator<< (const Fixed &toInsert);
-
+    
     int getRawBits(void) const;
     void setRawBits( int const raw );
-
+    
     float toFloat( void ) const;
     int toInt( void ) const;
-
+    
 };
+
+std::ostream &operator<< (std::ostream &o, const Fixed &toInsert);
 
 #endif

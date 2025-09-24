@@ -6,7 +6,7 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 17:05:07 by mairivie          #+#    #+#             */
-/*   Updated: 2025/09/24 14:37:27 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/09/24 16:30:42 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,13 @@ Fixed::Fixed() {
 
 Fixed::Fixed(const int value) {
     std::cout << BLUE << "Int constructor called !" << RESET << std::endl;
+    this -> _raw_bits = value;
 }
 
 Fixed::Fixed(const float fvalue) {
     std::cout << BLUE << "Float constructor called !" << RESET << std::endl;
+    float copy = fvalue / 2;
+    copy ++;
 }
 
 Fixed::Fixed(const Fixed &toCopy)
@@ -47,11 +50,12 @@ Fixed &Fixed::operator=(const Fixed &toCopy) {
     return *this;
 }
 
-std::ostream &operator<< (const Fixed &toInsert); {
+std::ostream &operator<< (std::ostream &o, const Fixed &toInsert) {
     float   res;
     
    res = toInsert.toFloat();
-   std::cout << res;   
+   o << res; 
+   return(o); 
    
 }
 
@@ -78,7 +82,7 @@ void Fixed::setRawBits( int const raw ) {
 // ne pas avoir droit a << car surcharge operateur
 float Fixed::toFloat( void ) const {
     float   result;
-    int     tmp;
+    // int     tmp;
     
     result = (float) _raw_bits / (1 << 8);
     //result = tmp << 8 ;
@@ -88,7 +92,7 @@ float Fixed::toFloat( void ) const {
 }
 
 int Fixed::toInt( void ) const {
-    int result;
+    int result = 0;
     // arrondi de  : (float * 2^deci_bits)
     // protect contre les overflows ?
     // = passer par un double pour check avant de cut en int
