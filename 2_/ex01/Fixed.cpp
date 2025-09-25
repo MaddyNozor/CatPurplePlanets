@@ -6,7 +6,7 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 17:05:07 by mairivie          #+#    #+#             */
-/*   Updated: 2025/09/24 16:30:42 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/09/25 15:38:45 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,16 @@ Fixed::Fixed() {
 }
 
 Fixed::Fixed(const int value) {
+    int fix_bits = value << 8;
+    _raw_bits = fix_bits;
+    
     std::cout << BLUE << "Int constructor called !" << RESET << std::endl;
-    this -> _raw_bits = value;
 }
 
 Fixed::Fixed(const float fvalue) {
+    float fix_bits = fvalue * 100000000;
+    _raw_bits = roundf(fix_bits);
     std::cout << BLUE << "Float constructor called !" << RESET << std::endl;
-    float copy = fvalue / 2;
-    copy ++;
 }
 
 Fixed::Fixed(const Fixed &toCopy)
@@ -93,6 +95,9 @@ float Fixed::toFloat( void ) const {
 
 int Fixed::toInt( void ) const {
     int result = 0;
+    int bit_copy = 0;
+    bit_copy = this->getRawBits();
+    result = bit_copy >> 8;
     // arrondi de  : (float * 2^deci_bits)
     // protect contre les overflows ?
     // = passer par un double pour check avant de cut en int
