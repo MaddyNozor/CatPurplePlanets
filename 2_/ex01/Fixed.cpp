@@ -25,7 +25,7 @@ Fixed::Fixed(const int value) {
 }
 
 Fixed::Fixed(const float fvalue) {
-    float fix_bits = fvalue * 100000000;
+    float fix_bits = fvalue * (1 << _decimal_bits);
     _raw_bits = roundf(fix_bits);
     std::cout << BLUE << "Float constructor called !" << RESET << std::endl;
 }
@@ -66,7 +66,7 @@ std::ostream &operator<< (std::ostream &o, const Fixed &toInsert) {
 int Fixed::getRawBits(void) const {
     int result = 0;
     
-    std::cout << GREEN << "getRawBits member function called" << RESET << std::endl;
+    //std::cout << GREEN << "getRawBits member function called" << RESET << std::endl;
     
     result = this->_raw_bits;
     return (result);
