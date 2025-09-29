@@ -70,6 +70,14 @@ public:
     
 };
 
-std::ostream &operator<< (std::ostream &o, const Fixed &toInsert);
+std::ostream    &operator<< (std::ostream &o, const Fixed &toInsert);
+
+bool            operator>(const Fixed &a, const Fixed &b);
+bool            operator<(const Fixed &a, const Fixed &b);
+bool            operator>=(const Fixed &a, const Fixed &b);
+bool            operator>=(const Fixed &a, const Fixed &b);
+bool            operator==(const Fixed &a, const Fixed &b);
+bool            operator!=(const Fixed &a, const Fixed &b);
+
 
 #endif

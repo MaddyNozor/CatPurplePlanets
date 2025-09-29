@@ -58,7 +58,42 @@ std::ostream &operator<< (std::ostream &o, const Fixed &toInsert) {
    res = toInsert.toFloat();
    o << res; 
    return(o); 
-   
+}
+
+bool    operator>(const Fixed &a, const Fixed &b) {
+    if (a.getRawBits() > b.getRawBits())
+        return true;
+    return false;
+}
+
+bool    operator<(const Fixed &a, const Fixed &b) {
+    if (a.getRawBits() < b.getRawBits())
+        return true;
+    return false;
+}
+
+bool    operator>=(const Fixed &a, const Fixed &b) {
+    if (a.getRawBits() >= b.getRawBits())
+        return true;
+    return false;
+}
+
+bool    operator<=(const Fixed &a, const Fixed &b) {
+    if (a.getRawBits() <= b.getRawBits())
+        return true;
+    return false;
+}
+
+bool    operator==(const Fixed &a, const Fixed &b) {
+    if (a.getRawBits() == b.getRawBits())
+        return true;
+    return false;
+}
+
+bool    operator!=(const Fixed &a, const Fixed &b) {
+    if (a.getRawBits() != b.getRawBits())
+        return true;
+    return false;
 }
 
 // ==== METHODS ====
