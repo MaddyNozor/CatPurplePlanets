@@ -57,43 +57,96 @@ bool    Fixed::operator>(const Fixed &toCompare) const {
         return true;
     return false;
 }
-
 bool    Fixed::operator<(const Fixed &toCompare) const {
     if (this->_raw_bits < toCompare.getRawBits())
         return true;
     return false;
 }
-
 bool    Fixed::operator>=(const Fixed &toCompare) const {
-    if (this->_raw_bits >= toCompare.getRawBits())
-        return true;
-    return false;
+    return (this->_raw_bits >= toCompare.getRawBits());
 }
-
 bool    Fixed::operator<=(const Fixed &toCompare) const {
-    if (this->_raw_bits <= toCompare.getRawBits())
-        return true;
-    return false;
+    return (this->_raw_bits <= toCompare.getRawBits());
 }
-
 bool    Fixed::operator==(const Fixed &toCompare) const {
-    if (this->_raw_bits == toCompare.getRawBits())
-        return true;
-    return false;
+    return (this->_raw_bits == toCompare.getRawBits());
 }
-
 bool    Fixed::operator!=(const Fixed &toCompare) const {
-    if (this->_raw_bits != toCompare.getRawBits())
-        return true;
-    return false;
+    return (this->_raw_bits != toCompare.getRawBits());
 }
 
-std::ostream &operator<< (std::ostream &o, const Fixed &toInsert) {
-    float   res;
-    
-   res = toInsert.toFloat();
-   o << res; 
-   return(o); 
+Fixed Fixed::operator+(const Fixed &secondTerm) const {
+    Fixed   result;
+
+    int temp = (this->_raw_bits + secondTerm.getRawBits());
+    result.setRawBits(temp);
+    return result;
+}
+Fixed Fixed::operator-(const Fixed &secondTerm) const {
+    Fixed   result;
+
+    int temp = (this->_raw_bits - secondTerm.getRawBits());
+    result.setRawBits(temp);
+    return result;
+}
+Fixed Fixed::operator*(const Fixed &secondTerm) const {
+    float ftemp = (this->toFloat()) * (secondTerm.toFloat());
+    Fixed result(ftemp);
+    return result;
+}
+Fixed Fixed::operator/(const Fixed &secondTerm) const {
+    float ftemp = (this->toFloat()) / (secondTerm.toFloat());
+    Fixed result(ftemp);
+    return result;
+}
+
+Fixed& Fixed::operator++() {
+	this->_raw_bits += 1;
+	return *this;
+}
+
+Fixed& Fixed::operator--() {
+	this->_raw_bits -= 1;
+	return *this;
+}
+
+Fixed	Fixed::operator++(int) {
+	Fixed	temp(*this);
+	this->_raw_bits += 1;
+	return temp;
+}
+
+Fixed	Fixed::operator--(int) {
+	Fixed	temp(*this);
+	this->_raw_bits -= 1;
+	return temp;
+}
+
+Fixed &Fixed::min(Fixed &a, Fixed &b) {
+    if (a > b)
+        return b;
+    return a;
+}
+const Fixed &Fixed::min(const Fixed &a, const Fixed &b){
+    if (a > b)
+        return b;
+    return a;
+}
+Fixed &Fixed::max(Fixed &a, Fixed &b) {
+    if (a < b)
+        return b;
+    return a;
+}
+const Fixed &Fixed::max(const Fixed &a, const Fixed &b){
+    if (a < b)
+        return b;
+    return a;
+}
+
+std::ostream &operator<< (std::ostream &outStream, const Fixed &toInsert) {
+    float   res = toInsert.toFloat();
+   outStream << res; 
+   return(outStream); 
 }
 
 // ==== METHODS ====
@@ -115,11 +168,8 @@ void Fixed::setRawBits( int const raw ) {
     return;
 }
 
-//pour les 2 methodes suivantes j'ai l'impression de 
-// ne pas avoir droit a << car surcharge operateur
 float Fixed::toFloat( void ) const {
     float   result;
-    // int     tmp;
     
     result = (float) _raw_bits / (1 << 8);
     //result = tmp << 8 ;
