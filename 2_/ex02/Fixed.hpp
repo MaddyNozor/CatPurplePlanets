@@ -45,6 +45,9 @@
 // ===== DEFINE CLEAN CODE =====
 #define EXIT_SUCCESS 0
 #define EXIT_FAIL 1
+//#define BOOL_TRUE 0
+//#define BOOL_FALSE 1
+#define DEC_BITS_16_8 8
 
 // ===== CLASS =====
 
@@ -52,7 +55,7 @@ class Fixed
 {
 private:
     int                 _raw_bits;
-    static const int    _decimal_bits = 8;
+    static const int    _decimal_bits = DEC_BITS_16_8 ;
 public:
     Fixed();
     Fixed(const int value);
@@ -61,6 +64,12 @@ public:
     ~Fixed();
     
     Fixed   &operator=(const Fixed &toCopy);
+    bool    operator>(const Fixed &toCompare) const;
+    bool    operator<(const Fixed &toCompare) const;
+    bool    operator>=(const Fixed &toCompare) const;
+    bool    operator<=(const Fixed &toCompare) const;
+    bool    operator==(const Fixed &toCompare) const;
+    bool    operator!=(const Fixed &toCompare) const;
     
     int getRawBits(void) const;
     void setRawBits( int const raw );
@@ -72,12 +81,7 @@ public:
 
 std::ostream    &operator<< (std::ostream &o, const Fixed &toInsert);
 
-bool            operator>(const Fixed &a, const Fixed &b);
-bool            operator<(const Fixed &a, const Fixed &b);
-bool            operator>=(const Fixed &a, const Fixed &b);
-bool            operator>=(const Fixed &a, const Fixed &b);
-bool            operator==(const Fixed &a, const Fixed &b);
-bool            operator!=(const Fixed &a, const Fixed &b);
+
 
 
 #endif

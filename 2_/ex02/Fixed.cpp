@@ -41,7 +41,7 @@ Fixed::~Fixed() {
 
 // ==== OPERATOR OVERLOADS ====
 
-Fixed &Fixed::operator=(const Fixed &toCopy) {
+Fixed   &Fixed::operator=(const Fixed &toCopy) {
     std::cout << YELLOW << "Copy assignment operator= called." << RESET << std::endl;
     
     if(this != &toCopy)
@@ -52,48 +52,48 @@ Fixed &Fixed::operator=(const Fixed &toCopy) {
     return *this;
 }
 
+bool    Fixed::operator>(const Fixed &toCompare) const {
+    if (this->_raw_bits > toCompare.getRawBits())
+        return true;
+    return false;
+}
+
+bool    Fixed::operator<(const Fixed &toCompare) const {
+    if (this->_raw_bits < toCompare.getRawBits())
+        return true;
+    return false;
+}
+
+bool    Fixed::operator>=(const Fixed &toCompare) const {
+    if (this->_raw_bits >= toCompare.getRawBits())
+        return true;
+    return false;
+}
+
+bool    Fixed::operator<=(const Fixed &toCompare) const {
+    if (this->_raw_bits <= toCompare.getRawBits())
+        return true;
+    return false;
+}
+
+bool    Fixed::operator==(const Fixed &toCompare) const {
+    if (this->_raw_bits == toCompare.getRawBits())
+        return true;
+    return false;
+}
+
+bool    Fixed::operator!=(const Fixed &toCompare) const {
+    if (this->_raw_bits != toCompare.getRawBits())
+        return true;
+    return false;
+}
+
 std::ostream &operator<< (std::ostream &o, const Fixed &toInsert) {
     float   res;
     
    res = toInsert.toFloat();
    o << res; 
    return(o); 
-}
-
-bool    operator>(const Fixed &a, const Fixed &b) {
-    if (a.getRawBits() > b.getRawBits())
-        return true;
-    return false;
-}
-
-bool    operator<(const Fixed &a, const Fixed &b) {
-    if (a.getRawBits() < b.getRawBits())
-        return true;
-    return false;
-}
-
-bool    operator>=(const Fixed &a, const Fixed &b) {
-    if (a.getRawBits() >= b.getRawBits())
-        return true;
-    return false;
-}
-
-bool    operator<=(const Fixed &a, const Fixed &b) {
-    if (a.getRawBits() <= b.getRawBits())
-        return true;
-    return false;
-}
-
-bool    operator==(const Fixed &a, const Fixed &b) {
-    if (a.getRawBits() == b.getRawBits())
-        return true;
-    return false;
-}
-
-bool    operator!=(const Fixed &a, const Fixed &b) {
-    if (a.getRawBits() != b.getRawBits())
-        return true;
-    return false;
 }
 
 // ==== METHODS ====
