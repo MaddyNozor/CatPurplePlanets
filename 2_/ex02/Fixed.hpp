@@ -6,7 +6,7 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 17:05:10 by mairivie          #+#    #+#             */
-/*   Updated: 2025/09/24 16:26:33 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/10/01 16:21:25 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,7 @@
 // ===== DEFINE CLEAN CODE =====
 #define EXIT_SUCCESS 0
 #define EXIT_FAIL 1
-//#define BOOL_TRUE 0
-//#define BOOL_FALSE 1
-#define DEC_BITS_16_8 8
+#define DEC_BITS_8_8 8 // (Q8:8 ou 16/8 )
 
 // ===== CLASS =====
 
@@ -55,7 +53,7 @@ class Fixed
 {
 private:
     int                 _raw_bits;
-    static const int    _decimal_bits = DEC_BITS_16_8 ;
+    static const int    _decimal_bits = DEC_BITS_8_8 ;
 public:
     Fixed();
     Fixed(const int value);

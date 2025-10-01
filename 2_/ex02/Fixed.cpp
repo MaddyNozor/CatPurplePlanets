@@ -6,7 +6,7 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 17:05:07 by mairivie          #+#    #+#             */
-/*   Updated: 2025/09/25 15:38:45 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/10/01 17:40:42 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,11 +83,14 @@ Fixed Fixed::operator+(const Fixed &secondTerm) const {
     return result;
 }
 Fixed Fixed::operator-(const Fixed &secondTerm) const {
-    Fixed   result;
+    // Fixed   result;
 
-    int temp = (this->_raw_bits - secondTerm.getRawBits());
-    result.setRawBits(temp);
-    return result;
+    // Fixed temp = (this->_raw_bits - secondTerm.getRawBits());
+    // result.setRawBits(temp);
+    // return result;
+    Fixed tmp;
+    tmp.setRawBits(this->_raw_bits - secondTerm.getRawBits());
+    return tmp;
 }
 Fixed Fixed::operator*(const Fixed &secondTerm) const {
     float ftemp = (this->toFloat()) * (secondTerm.toFloat());
