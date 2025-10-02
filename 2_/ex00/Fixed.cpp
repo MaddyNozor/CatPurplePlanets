@@ -6,26 +6,26 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 17:05:07 by mairivie          #+#    #+#             */
-/*   Updated: 2025/09/11 17:59:27 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/10/02 17:08:26 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
 Fixed::Fixed() {
-    std::cout << BLUE << "Default constructor called !" << RESET << std::endl;
+    std::cout << BLUE << "Default constructor called" << RESET << std::endl;
     _raw_bits = 0;
 }
 
 Fixed::Fixed(const Fixed &toCopy)
 {
-    std::cout << YELLOW << "Copy constructor called." << RESET << std::endl;
+    std::cout << YELLOW << "Copy constructor called" << RESET << std::endl;
     *this = toCopy;
 }
 
 Fixed &Fixed::operator=(const Fixed &toCopy)
 {
-    std::cout << YELLOW << "Copy assignment operator= called." << RESET << std::endl;
+    std::cout << YELLOW << "Copy assignment operator called" << RESET << std::endl;
     
     if(this != &toCopy)
     {

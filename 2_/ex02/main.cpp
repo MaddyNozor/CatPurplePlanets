@@ -6,7 +6,7 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 17:05:15 by mairivie          #+#    #+#             */
-/*   Updated: 2025/10/02 16:23:27 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/10/02 16:57:05 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ int checkAv(int ac, char** av) {
    std::string tmp;
    if (atoi(av[1]) == 0 && ((tmp = av[1]) != "0"))
       return EXIT_FAIL;
-   if ((atof(av[2]) == 0 && ((tmp = av[1]) != "0"))
-   || (atof(av[3]) == 0 && ((tmp = av[1]) != "0")))
+   if ((atof(av[2]) == 0 && ((tmp = av[2]) != "0"))
+   || (atof(av[3]) == 0 && ((tmp = av[3]) != "0")))
       return EXIT_FAIL;
    return EXIT_SUCCESS;
 }
@@ -54,8 +54,8 @@ int main(int ac, char** av) {
    Fixed a (atoi(av[1]));
    std::cout << "Fixed a = " << a << std::endl;
    
-   float B = atof(av[2]);
-   std::cout << "\nB  (float) = " << B << std::endl;
+   double B = (double)atof(av[2]);
+   std::cout << "\nB  (double) = " << av[2] << std::endl;
    Fixed b ((float)atof(av[2]));
    std::cout << "Fixed b = " << b << std::endl;
    
@@ -83,9 +83,9 @@ int main(int ac, char** av) {
 
     std::cout << b <<" + "<< a <<" = " << Add << std::setw(30) << " with floats :  " << (B+A) << std::endl;
       std::cout << c <<" - "<< b <<" = " << Rem << std::setw(30) << "  with floats :   " << (C-B) <<  std::endl;
-      std::cout << c <<" * "<< a <<" = " << Mult << std::setw(30) << " with floats :  " << (B+A) << std::endl;
-     std::cout << c <<" / "<< b <<" = " << Div << std::setw(30) << " with floats :  " << (B+A) << std::endl;
-      std::cout << b <<" / "<< a <<" = " << Crash << std::setw(30) << "  with floats :  " << (B+A) << std::endl;
+      std::cout << c <<" * "<< a <<" = " << Mult << std::setw(30) << " with floats :  " << (C*A) << std::endl;
+     std::cout << c <<" / "<< b <<" = " << Div << std::setw(30) << " with floats :  " << (C/B) << std::endl;
+      std::cout << b <<" / "<< a <<" = " << Crash << std::setw(30) << "  with floats :  " << (B/A) << std::endl;
 
     std::cout <<  GREEN <<"\n=== Comparison ==="<< RESET << std::endl;
     std::cout << b <<" > "<< a <<" = " << ((b > a) ? "OK " : "NOPE  ") << std::endl;
@@ -104,55 +104,13 @@ int main(int ac, char** av) {
     std::cout << "c after = " << c << std::endl;
 
    std::cout <<  GREEN <<"\n=== Min / Max ==="<< RESET << std::endl;
-   std::cout << "b = " << b <<  "\nc = " << c << std::endl;
-    std::cout << "min(b,c) = " << Fixed::min(b,c) << std::endl;
+   std::cout << "b = " << b << "\nc = " << c << "\ne = " << e << std::endl;
+   std::cout << "max(e,c) = " << Fixed::max(e,c) << std::endl;
+   std::cout << "min(e,c) = " << Fixed::min(e,c) << std::endl;
+   std::cout << "min(b,c) = " << Fixed::min(b,c) << std::endl;
     std::cout << "max(b,c) = " << Fixed::max(b,c) << "\n\n" << std::endl;
 
    return EXIT_SUCCESS;
 }
 
-/*#include "Fixed.hpp"
 
-int main(void)
-{
-    std::cout << "=== Constructors ===" << std::endl;
-    Fixed a;                
-    Fixed b(10);            
-    Fixed c(42.42f);        
-    Fixed d(b);             
-
-    std::cout << "a = " << a << std::endl;
-    std::cout << "b = " << b << std::endl;
-    std::cout << "c = " << c << std::endl;
-    std::cout << "d = " << d << std::endl;
-
-    std::cout << "\n=== Arithmetic ===" << std::endl;
-    Fixed e = b + c;
-    Fixed f = c - b;
-    Fixed g = b * c;
-    Fixed h = c / b;
-
-    std::cout << "b + c = " << e << std::endl;
-    std::cout << "c - b = " << f << std::endl;
-    std::cout << "b * c = " << g << std::endl;
-    std::cout << "c / b = " << h << std::endl;
-
-    std::cout << "\n=== Comparison ===" << std::endl;
-    std::cout << "b > c ? " << (b > c) << std::endl;
-    std::cout << "b < c ? " << (b < c) << std::endl;
-    std::cout << "b == d ? " << (b == d) << std::endl;
-
-    std::cout << "\n=== Increment / Decrement ===" << std::endl;
-    Fixed x(5.5f);
-    std::cout << "x       = " << x << std::endl;
-    std::cout << "++x     = " << ++x << std::endl;  // pre-increment
-    std::cout << "x++     = " << x++ << std::endl;  // post-increment
-    std::cout << "x after = " << x << std::endl;
-
-    std::cout << "\n=== Min / Max ===" << std::endl;
-    Fixed y(2.5f), z(9.75f);
-    std::cout << "min(y,z) = " << Fixed::min(y,z) << std::endl;
-    std::cout << "max(y,z) = " << Fixed::max(y,z) << std::endl;
-
-    return 0;
-}*/

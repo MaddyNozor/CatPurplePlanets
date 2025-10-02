@@ -6,7 +6,7 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 17:05:07 by mairivie          #+#    #+#             */
-/*   Updated: 2025/10/02 16:08:43 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/10/02 17:10:23 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,24 +81,22 @@ Fixed Fixed::operator+(const Fixed &secondTerm) const {
     return result;
 }
 Fixed Fixed::operator-(const Fixed &secondTerm) const {
-    // Fixed   result;
-
-    // Fixed temp(this->_raw_bits - secondTerm.getRawBits());
-    // result.setRawBits(temp);
-    // return result;
     Fixed res;
     res.setRawBits(this->_raw_bits - secondTerm.getRawBits());
     return res;
 }
 Fixed Fixed::operator*(const Fixed &secondTerm) const {
     Fixed res;
-    res.setRawBits(this->_raw_bits * secondTerm.getRawBits());
+    
+    long tmp = (long)this->_raw_bits * (long)secondTerm.getRawBits();
+    
+    res.setRawBits(tmp >> this->_decimal_bits );
     return res;
 }
 Fixed Fixed::operator/(const Fixed &secondTerm) const {
     Fixed res;
 
-    float tmp = (this->_raw_bits / secondTerm.getRawBits());
+    float tmp = ((this->_raw_bits << this->_decimal_bits) / secondTerm.getRawBits());
     res.setRawBits(tmp);
     return res;
 }
@@ -186,15 +184,3 @@ int Fixed::toInt( void ) const {
     return (result);
 }
 
-
-// #include <stdio.h>
-// typedef int Fixed;
-
-// #define FRACT_BITS 16
-// #define FRACT_BITS_D2 8
-// #define FIXED_ONE (1 << FRACT_BITS)
-// #define INT2FIXED(x) ((x) << FRACT_BITS)
-// #define FLOAT2FIXED(x) ((int)((x) * (1 << FRACT_BITS))) 
-// #define FIXED2INT(x) ((x) >> FRACT_BITS)
-// #define FIXED2DOUBLE(x) (((double)(x)) / (1 << FRACT_BITS))
-// #define MULT(x, y) ( ((x) >> FRACT_BITS_D2) * ((y)>> FRACT_BITS_D2) )
