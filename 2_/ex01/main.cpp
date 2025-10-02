@@ -6,7 +6,7 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 17:05:15 by mairivie          #+#    #+#             */
-/*   Updated: 2025/09/11 19:40:10 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/10/02 15:02:23 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,38 @@ int main( void ) {
     return 0;
 }
 
+// int main(int ac, char** av) {
+//    if (checkAv(ac, av) == EXIT_FAIL) {
+//       std::cout << RED << INPUT_ERROR << RESET << std::endl;
+//       return EXIT_FAIL;
+//    }
+//    std::cout << GREEN <<"\n=== Construction ==="<< RESET << std::endl;
+//    int A = atoi(av[1]);
+//    std::cout << "A (int) = " << A << std::endl;
+//    Fixed a (atoi(av[1]));
+//    std::cout << "Fixed a = " << a << std::endl;
+   
+//    float B = atof(av[2]);
+//    std::cout << "\nB  (float) = " << B << std::endl;
+//    Fixed b ((float)atof(av[2]));
+//    std::cout << "Fixed b = " << b << std::endl;
+   
+//    float C = (float)atof(av[3]);
+//    std::cout << "\nC  (float) = " << C << std::endl;
+//    Fixed c ((float)atof(av[3]));
+//    std::cout << "Fixed c = " << c << std::endl;
+
+   
+//    std::cout << "\nDefault = 0" << std::endl;
+//    Fixed d;
+//    std::cout << "Fixed d = " << d << std::endl;
+
+//    std::cout << "\nCopy from c = " << c << std::endl;
+//    Fixed e(c);
+//    std::cout << "Fixed e = " << e << std::endl;
+
+//    return EXIT_SUCCESS;
+// }
 //TODO: check le fait qu'on doive tranformer des nb en string (only string on cout)
 /*
 std::string toString(const int nb)

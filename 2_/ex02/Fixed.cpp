@@ -6,48 +6,46 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 17:05:07 by mairivie          #+#    #+#             */
-/*   Updated: 2025/10/01 17:40:42 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/10/02 16:08:43 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
 Fixed::Fixed() {
-    std::cout << BLUE << "Default constructor called !" << RESET << std::endl;
     _raw_bits = 0;
+    //std::cout << BLUE << "Default constructor called !" << RESET << std::endl;
 }
 
 Fixed::Fixed(const int value) {
     int fix_bits = value << 8;
     _raw_bits = fix_bits;
-    
-    std::cout << BLUE << "Int constructor called !" << RESET << std::endl;
+    //std::cout << BLUE << "Int constructor called !" << RESET << std::endl;
 }
 
 Fixed::Fixed(const float fvalue) {
     float fix_bits = fvalue * (1 << _decimal_bits);
     _raw_bits = roundf(fix_bits);
-    std::cout << BLUE << "Float constructor called !" << RESET << std::endl;
+    //std::cout << BLUE << "Float constructor called !" << RESET << std::endl;
 }
 
 Fixed::Fixed(const Fixed &toCopy)
 {
-    std::cout << YELLOW << "Copy constructor called." << RESET << std::endl;
     *this = toCopy;
+    //std::cout << YELLOW << "Copy constructor called." << RESET << std::endl;
 }
 Fixed::~Fixed() {
-    std::cout << BLUE << "Destructor called !" << RESET << std::endl;
+    //std::cout << BLUE << "Destructor called !" << RESET << std::endl;
 }
 
 // ==== OPERATOR OVERLOADS ====
 
 Fixed   &Fixed::operator=(const Fixed &toCopy) {
-    std::cout << YELLOW << "Copy assignment operator= called." << RESET << std::endl;
+    //std::cout << YELLOW << "Copy assignment operator= called." << RESET << std::endl;
     
     if(this != &toCopy)
     {
         this->_raw_bits = toCopy.getRawBits();
-        //this->_decimal_bits = toCopy._decimal_bits;
     }
     return *this;
 }
@@ -85,22 +83,24 @@ Fixed Fixed::operator+(const Fixed &secondTerm) const {
 Fixed Fixed::operator-(const Fixed &secondTerm) const {
     // Fixed   result;
 
-    // Fixed temp = (this->_raw_bits - secondTerm.getRawBits());
+    // Fixed temp(this->_raw_bits - secondTerm.getRawBits());
     // result.setRawBits(temp);
     // return result;
-    Fixed tmp;
-    tmp.setRawBits(this->_raw_bits - secondTerm.getRawBits());
-    return tmp;
+    Fixed res;
+    res.setRawBits(this->_raw_bits - secondTerm.getRawBits());
+    return res;
 }
 Fixed Fixed::operator*(const Fixed &secondTerm) const {
-    float ftemp = (this->toFloat()) * (secondTerm.toFloat());
-    Fixed result(ftemp);
-    return result;
+    Fixed res;
+    res.setRawBits(this->_raw_bits * secondTerm.getRawBits());
+    return res;
 }
 Fixed Fixed::operator/(const Fixed &secondTerm) const {
-    float ftemp = (this->toFloat()) / (secondTerm.toFloat());
-    Fixed result(ftemp);
-    return result;
+    Fixed res;
+
+    float tmp = (this->_raw_bits / secondTerm.getRawBits());
+    res.setRawBits(tmp);
+    return res;
 }
 
 Fixed& Fixed::operator++() {
@@ -165,9 +165,8 @@ int Fixed::getRawBits(void) const {
 
 
 void Fixed::setRawBits( int const raw ) {
-    std::cout << RED << "setRawBits member function called" << RESET << std::endl;
-
     this->_raw_bits = raw;
+    //std::cout << RED << "setRawBits member function called" << RESET << std::endl;
     return;
 }
 
@@ -175,20 +174,15 @@ float Fixed::toFloat( void ) const {
     float   result;
     
     result = (float) _raw_bits / (1 << 8);
-    //result = tmp << 8 ;
-    // droit a fonction puissance ? ( pow(2, n) pour 2^n )
-    // protect contre les overflows ?
     return (result);
 }
 
 int Fixed::toInt( void ) const {
     int result = 0;
     int bit_copy = 0;
+    
     bit_copy = this->getRawBits();
     result = bit_copy >> 8;
-    // arrondi de  : (float * 2^deci_bits)
-    // protect contre les overflows ?
-    // = passer par un double pour check avant de cut en int
     return (result);
 }
 
