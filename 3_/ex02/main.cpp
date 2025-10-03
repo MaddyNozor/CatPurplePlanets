@@ -1,35 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.cpp                                       :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/03 14:26:57 by mairivie          #+#    #+#             */
-/*   Updated: 2025/10/03 14:28:55 by mairivie         ###   ########.fr       */
+/*   Created: 2025/10/03 14:27:10 by mairivie          #+#    #+#             */
+/*   Updated: 2025/10/03 14:27:11 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
-
-ScavTrap::ScavTrap() {
-std::cout << BLUE << "Call constructor." << RESET << std::endl;
-}
-
-ScavTrap::ScavTrap(const ScavTrap &toCopy)
-{
-    *this = toCopy;
-}
-
-ScavTrap &ScavTrap::operator=(const ScavTrap &toCopy)
-{
-    if(this != &toCopy)
-    {
-
-    }
-    return *this;
-}
-
-ScavTrap::~ScavTrap() {
-std::cout << BLUE << "Call destructor." << RESET << std::endl;
-}
