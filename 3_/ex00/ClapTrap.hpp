@@ -6,7 +6,7 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:26:48 by mairivie          #+#    #+#             */
-/*   Updated: 2025/10/03 15:17:04 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/10/03 16:39:54 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@
 // ===== DEFINE CLEAN CODE =====
 #define EXIT_SUCCESS 0
 #define EXIT_FAIL 1
+#define MAX_HP 10
+#define MAX_MANA 10
+
 
 // ===== CLASS DECLARATION =====
 class ClapTrap
@@ -38,15 +41,22 @@ public:
     ClapTrap &operator=(const ClapTrap &toCopy);
     ~ClapTrap();
 
+    //=== GETTERS ===
     std::string    getName(void) const;
     int            getHitPoint(void) const;
     int            getManaPoint(void) const;
     int            getAttackDamage(void) const;
 
-    void            setName(const std::string newName);
-    void            setHitPoint(const int newValue);
-    void            setManaPoint(const int newValue);
-    void            setAttackDamage(const int newValue);
+    //=== SETTERS ===
+    void    setName(const std::string newName);
+    void    setHitPoint(const int newValue);
+    void    setManaPoint(const int newValue);
+    void    setAttackDamage(const int newValue);
+
+    //=== MEMBER FUNCTIONS ===
+    void    attack(const std::string& target);
+    void    takeDamage(unsigned int amount);
+    void    beRepaired(unsigned int amount);
 };
 
 #endif
