@@ -6,7 +6,7 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:26:48 by mairivie          #+#    #+#             */
-/*   Updated: 2025/10/03 14:32:54 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/10/03 15:17:04 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,27 @@
 class ClapTrap
 {
 private:
-
-
+    std::string _name;
+    int         _hitPoint;
+    int         _manaPoint;
+    int         _attackDamage;
 public:
     /* constructor default, copy, affecation operator, destructor */
     ClapTrap();
+    ClapTrap(std::string name);
     ClapTrap(const ClapTrap &toCopy);
     ClapTrap &operator=(const ClapTrap &toCopy);
     ~ClapTrap();
 
+    std::string    getName(void) const;
+    int            getHitPoint(void) const;
+    int            getManaPoint(void) const;
+    int            getAttackDamage(void) const;
 
+    void            setName(const std::string newName);
+    void            setHitPoint(const int newValue);
+    void            setManaPoint(const int newValue);
+    void            setAttackDamage(const int newValue);
 };
 
 #endif
