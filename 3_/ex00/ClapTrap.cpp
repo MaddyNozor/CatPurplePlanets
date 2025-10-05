@@ -20,8 +20,8 @@ ClapTrap::ClapTrap() {
     std::cout << BLUE << "Call constructor with no name" << RESET << std::endl;
 }
 ClapTrap::ClapTrap(std::string name) {
-    _hitPoint = 10;
-    _manaPoint = 10;
+    _hitPoint = MAX_HP;
+    _manaPoint = MAX_MANA;
     _attackDamage = 0;
     if (name == "") {
         _name = "[ANONYMOUS]";
@@ -37,11 +37,12 @@ ClapTrap::ClapTrap(const ClapTrap &toCopy) {
 }
 ClapTrap &ClapTrap::operator=(const ClapTrap &toCopy)
 {
-    if(this != &toCopy)
+    if(this != &toCopy) {
         this->_name = toCopy.getName();
         this->_hitPoint = toCopy.getHitPoint();
         this->_manaPoint = toCopy.getManaPoint();
         this->_attackDamage = toCopy.getAttackDamage();
+        }
     return *this;
 }
 ClapTrap::~ClapTrap() {
@@ -52,14 +53,17 @@ std::cout << BLUE << "Call destructor." << RESET << std::endl;
 std::string ClapTrap::getName(void) const {
     return _name;
 }
+
 int ClapTrap::getHitPoint(void) const {
     int result = 0; 
     result = this -> _hitPoint;
     return(result);
 }
+
 int ClapTrap::getManaPoint(void) const {
     return _manaPoint;
 }
+
 int ClapTrap::getAttackDamage(void) const {
     return _attackDamage;
 }
@@ -88,15 +92,11 @@ void    ClapTrap::attack(const std::string& target) {
         std::cout << RED << "Error : ClapTrap couldn't find the target" << RESET << std::endl;
         return;
     }
-    if (getManaPoint() == 0){
-        std::cout << RED << "Error : ClapTrap needs more Mana" << RESET << std::endl;
+    if (getManaPoint() <= 0){
+        std::cout << RED << "Error : ClapTrap " << this->getName() << " needs more Mana" << RESET << std::endl;
         return;
     }
-
-    if (getAttackDamage() == 0){
-        std::cout << RED << "Error : ClapTrap is pacifist, he wouldn't heart a fly." << RESET << std::endl;
-        return;
-    }
+    this->setManaPoint(this->getManaPoint() - 1);
     std::cout << CYAN << "ClapTrap " << this->getName() << " attacks " << target << ", causing " << this->getAttackDamage() << " points of damage !" << RESET << std::endl;
     return;
 }
@@ -106,18 +106,19 @@ void    ClapTrap::attack(const std::string& target) {
 // Effect: decrease HP by <amount> points
 void    ClapTrap::takeDamage(unsigned int amount) {
     int tempHP = this->getHitPoint();
+    const std::string name = this->getName();
     
     if (tempHP <= 0){
-        std::cout << RED << "Error : ClapTrap already HS. Please stop." << RESET << std::endl;
+        std::cout << RED << "Error : ClapTrap " << name << " already HS. Please stop." << RESET << std::endl;
         return;
     }
     tempHP -= amount;
     if (tempHP < 0) {
         tempHP = 0;
-        std::cout << RED << "No more HP, so long ClapTrap !" << RESET << std::endl;
+        std::cout << RED << "No more HP, so long ClapTrap " << name << "  !" << RESET << std::endl;
     }
     this->setHitPoint(tempHP);
-    std::cout << CYAN << "ClapTrap took damages" << RESET << std::endl;
+    std::cout << CYAN << "ClapTrap " << name << " took " << amount <<  " damages" << RESET << std::endl;
     return;
 }
 
@@ -127,26 +128,36 @@ void    ClapTrap::takeDamage(unsigned int amount) {
 void    ClapTrap::beRepaired(unsigned int amount) {
     int tempHP = this->getHitPoint();
     int tempMP = this->getManaPoint();
+    const std::string name = this->getName();
 
     if (tempMP <= 0){
-        std::cout << RED << "Error : ClapTrap needs more Mana" << RESET << std::endl;
+        std::cout << RED << "Error : ClapTrap " << name << " needs more Mana" << RESET << std::endl;
         return;
     }
     if (tempHP == MAX_HP){
-        std::cout << RED << "Error : ClapTrap is full life" << RESET << std::endl;
+        std::cout << RED << "Error : ClapTrap " << name << " is full life" << RESET << std::endl;
         return;
     }
     
-    tempHP -= amount;
+    tempHP += amount;
     tempMP -= 1;
     if (tempHP > MAX_HP) {
         tempHP = MAX_HP;
-        std::cout << GREEN << "Good news : ClapTrap is now full life !" << RESET << std::endl;
+        std::cout << GREEN << "Good news : ClapTrap " << name << " is now full life !" << RESET << std::endl;
     }
     this->setHitPoint(tempHP);
     this->setManaPoint(tempMP);
-    std::cout << CYAN << "ClapTrap repairs himself, gg !" << RESET << std::endl;
+    std::cout << CYAN << "ClapTrap " << name << " repairs himself, gg !" << RESET << std::endl;
     
     return;
+}
+
+void ClapTrap::status(void) const {
+    std::cout << YELLOW "[ ClapTrap "<< this->_name << " ] Status report, minion!" RESET << std::endl;
+    std::cout << this->_name 
+              << " | HP: " << this->_hitPoint 
+              << " | Mana: " << this->_manaPoint 
+              << " | ATK: " << this->_attackDamage 
+              << std::endl;
 }
 
