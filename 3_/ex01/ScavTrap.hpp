@@ -17,26 +17,32 @@
 #include <iostream>
 #include <string>
 #include "colorsTools.hpp"
+#include "ClapTrap.hpp"
 
 // ===== DEFINE CLEAN CODE =====
 #define EXIT_SUCCESS 0
 #define EXIT_FAIL 1
+#define MAX_HP_CT 10
+#define MAX_MANA_CT 10
+#define MAX_HP_ST 100
+#define MAX_MANA_ST 50
 
 // ===== CLASS DECLARATION =====
 
-class ScavTrap
-{
-    private:
-    
-    
-    public:
-    /* constructor default, copy, affecation operator, destructor */
-    ScavTrap();
-    ScavTrap(const ScavTrap &toCopy);
-    ScavTrap &operator=(const ScavTrap &toCopy);
-    ~ScavTrap();
-    
-    
+class ScavTrap : public ClapTrap{
+	public:
+		ScavTrap();
+		ScavTrap(std::string name);
+		ScavTrap(const ScavTrap& toCopy);
+		~ScavTrap();
+
+		ScavTrap& operator=(const ScavTrap& toCopy);
+	
+		void guardGate();
+		void attack(const std::string& target);
 };
+
+//See ? No new setters or getters here
+//I can still use them (ClapTrap's) in .cpp
 
 #endif

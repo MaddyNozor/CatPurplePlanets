@@ -17,7 +17,7 @@ ClapTrap::ClapTrap() {
     _manaPoint = MAX_MANA;
     _attackDamage = 0;
     _name = "[ANONYMOUS]";
-    std::cout << BLUE << "Call constructor with no name" << RESET << std::endl;
+    std::cout << BLUE << "Call CT constructor with no name" << RESET << std::endl;
 }
 ClapTrap::ClapTrap(std::string name) {
     _hitPoint = MAX_HP;
@@ -25,15 +25,15 @@ ClapTrap::ClapTrap(std::string name) {
     _attackDamage = 0;
     if (name == "") {
         _name = "[ANONYMOUS]";
-        std::cout << BLUE << "Call constructor with empty name" << RESET << std::endl;
+        std::cout << BLUE << "Call CT constructor with empty name" << RESET << std::endl;
         return;
     }
     _name = name;
-    std::cout << BLUE << "Call constructor with name." << RESET << std::endl;
+    std::cout << BLUE << "Call CT constructor with name." << RESET << std::endl;
 }
 ClapTrap::ClapTrap(const ClapTrap &toCopy) {
         *this = toCopy;
-        std::cout << BLUE << "Call copy function." << RESET << std::endl;
+        std::cout << BLUE << "Call CT copy function." << RESET << std::endl;
 }
 ClapTrap &ClapTrap::operator=(const ClapTrap &toCopy)
 {
@@ -46,7 +46,7 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &toCopy)
     return *this;
 }
 ClapTrap::~ClapTrap() {
-std::cout << BLUE << "Call destructor." << RESET << std::endl;
+std::cout << BLUE << "Call CT destructor." << RESET << std::endl;
 }
 
 //=== GETTERS ===
