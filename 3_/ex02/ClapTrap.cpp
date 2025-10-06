@@ -6,7 +6,7 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:26:42 by mairivie          #+#    #+#             */
-/*   Updated: 2025/10/06 14:42:16 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/10/06 15:47:07 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,7 +155,7 @@ void    ClapTrap::beRepaired(unsigned int amount) {
     }
     this->setHitPoint(tempHP);
     this->setManaPoint(tempMP);
-    std::cout << CYAN << _name << " repairs himself! +" << amount << " HP, gg !" << RESET << std::endl;
+    std::cout << CYAN << _name << " repairs himself! It restores up to " << amount << " HP, gg !" << RESET << std::endl;
     
     return;
 }

@@ -6,7 +6,7 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:26:57 by mairivie          #+#    #+#             */
-/*   Updated: 2025/10/06 14:58:45 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/10/06 15:42:59 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void ScavTrap::guardGate() {
 }
 
 void ScavTrap::status() const {
-    std::cout << YELLOW "[ ScavTrap "<< _name << " ] !" RESET << std::endl;
+    std::cout << YELLOW "[ ScavTrap "<< _name << " ]" RESET << std::endl;
     std::cout << _name 
               << " | HP: " << _hitPoint 
               << " | Mana: " << _manaPoint 

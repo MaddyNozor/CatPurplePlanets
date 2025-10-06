@@ -6,7 +6,7 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:27:07 by mairivie          #+#    #+#             */
-/*   Updated: 2025/10/03 14:35:07 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/10/06 15:16:35 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,17 @@ class FragTrap : public ClapTrap{
 		FragTrap();
 		FragTrap(std::string name);
 		FragTrap(const FragTrap& toCopy);
-		~FragTrap();
+		virtual ~FragTrap();
 
 		FragTrap& operator=(const FragTrap& toCopy);
 	
-		void highFiveGuys();
-		void attack(const std::string& target);
+		void	highFiveGuys();
+		void	attack(const std::string& target);
+		void	status() const;
 };
 
-//See ? No new setters or getters here
-//I can still use them (ClapTrap's) in .cpp
+//See ? No variables here.
+//No new setters or getters too.
+//But I can still use them in .cpp cool tho ?
 
 #endif

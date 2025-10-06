@@ -6,7 +6,7 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:27:04 by mairivie          #+#    #+#             */
-/*   Updated: 2025/10/03 14:29:18 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/10/06 15:43:32 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 FragTrap::FragTrap() {
     this->setHitPoint(MAX_HP_FT);
+    setMaxHitPoint(MAX_HP_FT);
     setManaPoint(MAX_MANA_FT);
     setAttackDamage(30);
     setName("[ANONYMOUS]");
@@ -22,14 +23,15 @@ FragTrap::FragTrap() {
 
 FragTrap::FragTrap(std::string name) {
     this->setHitPoint(MAX_HP_FT);
-    setManaPoint(MAX_MANA_FT);
-    setAttackDamage(30);
+    setMaxHitPoint(MAX_HP_FT);
+    this->_manaPoint = MAX_MANA_FT;
+    _attackDamage = 30;
     if (name == "") {
         setName("[ANONYMOUS]");
         std::cout << BLUE << "Call FragTrap constructor with empty name" << RESET << std::endl;
         return;
     }
-    setName(name);
+    _name = name;
     std::cout << BLUE << "Call FragTrap constructor with name." << RESET << std::endl;
 }
 
@@ -41,15 +43,15 @@ FragTrap::FragTrap(const FragTrap &toCopy) : ClapTrap(toCopy) {
 FragTrap &FragTrap::operator=(const FragTrap &toCopy) {
     if(this != &toCopy) {
         this->setName(toCopy.getName());
-        this->setHitPoint(toCopy.getHitPoint());
-        setManaPoint(toCopy.getManaPoint());
-        setAttackDamage(toCopy.getAttackDamage());
+        this->setHitPoint(toCopy._hitPoint);
+        this->_attackDamage = toCopy._attackDamage;
+        _manaPoint = toCopy._manaPoint;
     }
     return *this;
 }
 
 FragTrap::~FragTrap() {
-std::cout << BLUE << "Call Scav Trap destructor." << RESET << std::endl;
+std::cout << BLUE << "Call FragTrap " << _name << " destructor." << CYAN << "For you...I commit...seddoku..." << RESET << std::endl;
 }
 
 // Input: valid target's Name
@@ -71,7 +73,18 @@ void    FragTrap::attack(const std::string& target) {
 
 // Input: none
 // Return: none
-// Effect: Info, FragTrap is in guard mode.
+// Effect: Info, FragTrap gives you a highfive.
 void FragTrap::highFiveGuys() {
-	std::cout << GREEN "FragTrap " << getName() << " rise it's arm, requesting a highfive." RESET << std::endl;
+    std::cout << "Take these, gorgeous, you'll feel better!" << std::endl;
+	std::cout << GREEN "FragTrap " << _name << " rise it's arm, requesting a highfive." RESET << std::endl;
+    std::cout << "So... does this make me your favorite?" << std::endl;
+}
+
+void FragTrap::status() const {
+    std::cout << YELLOW "[ FragTrap "<< _name << " ]" RESET << std::endl;
+    std::cout << _name 
+              << " | HP: " << _hitPoint 
+              << " | Mana: " << _manaPoint 
+              << " | ATK: " << _attackDamage 
+              << std::endl;
 }
