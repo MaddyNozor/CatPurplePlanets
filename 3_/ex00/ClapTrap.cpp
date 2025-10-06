@@ -6,7 +6,7 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:26:42 by mairivie          #+#    #+#             */
-/*   Updated: 2025/10/03 18:33:26 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/10/06 18:20:00 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,24 @@ ClapTrap::ClapTrap() {
     _manaPoint = MAX_MANA;
     _attackDamage = 0;
     _name = "[ANONYMOUS]";
-    std::cout << BLUE << "Call constructor with no name" << RESET << std::endl;
+    std::cout << BLUE << "Call constructor with empty name." << RESET << "This ClapTrap is anonymous" << std::endl;
 }
 ClapTrap::ClapTrap(std::string name) {
     _hitPoint = MAX_HP;
     _manaPoint = MAX_MANA;
     _attackDamage = 0;
-    if (name == "") {
+    if (name.empty()) {
         _name = "[ANONYMOUS]";
-        std::cout << BLUE << "Call constructor with empty name" << RESET << std::endl;
+        std::cout << BLUE << "Call constructor with empty name." << RESET << "That ClapTrap is anonymous" << std::endl;
         return;
     }
     _name = name;
-    std::cout << BLUE << "Call constructor with name." << RESET << std::endl;
+    std::cout << BLUE << "Call constructor with name.  " << RESET  << "Hi, I'm ClapTrap, my name is " << _name << std::endl;
 }
 ClapTrap::ClapTrap(const ClapTrap &toCopy) {
         *this = toCopy;
         std::cout << BLUE << "Call copy function." << RESET << std::endl;
+        std::cout << _name << " and " << toCopy.getName() << " are now twins !" << std::endl;
 }
 ClapTrap &ClapTrap::operator=(const ClapTrap &toCopy)
 {
@@ -47,6 +48,7 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &toCopy)
 }
 ClapTrap::~ClapTrap() {
 std::cout << BLUE << "Call destructor." << RESET << std::endl;
+std::cout << "The robot is dead, long live the robot!" << std::endl;
 }
 
 //=== GETTERS ===
@@ -55,9 +57,7 @@ std::string ClapTrap::getName(void) const {
 }
 
 int ClapTrap::getHitPoint(void) const {
-    int result = 0; 
-    result = this -> _hitPoint;
-    return(result);
+    return _hitPoint;
 }
 
 int ClapTrap::getManaPoint(void) const {
@@ -70,16 +70,21 @@ int ClapTrap::getAttackDamage(void) const {
 
 //=== SETTERS ===
 void ClapTrap::setName(const std::string newName){
-    this -> _name = newName;
+    newName.empty() ? _name = "[ANONYMOUS]" : _name = newName;
 }
+//Check newValue, may correct it to be between 0 and MAX_HP, and set it
 void ClapTrap::setHitPoint(const int newValue) {
-    this -> _hitPoint = newValue;
+    newValue < 0 ? _hitPoint = 0 : _hitPoint = newValue;
+    newValue > MAX_HP ? _hitPoint = MAX_HP : _hitPoint = newValue;
 }
+//Check newValue, may correct it to be between 0 and MAX_MANA, and set it
 void ClapTrap::setManaPoint(const int newValue) {
-    _manaPoint = newValue;
+    newValue < 0 ? _manaPoint = 0 : _manaPoint = newValue;
+    newValue > MAX_MANA ? _manaPoint = MAX_MANA : _manaPoint = newValue;
 }
+//Check newValue, may correct it to be positiv
 void ClapTrap::setAttackDamage(const int newValue) {
-    _attackDamage = newValue;
+    newValue < 0 ? _attackDamage = 0 :_attackDamage = newValue;
 }
 
 //=== MEMBER FUNCTIONS ===
@@ -88,7 +93,7 @@ void ClapTrap::setAttackDamage(const int newValue) {
 // Return: Nothing
 // Effect: explicit what's happenning when ClapTrap attacks
 void    ClapTrap::attack(const std::string& target) {
-    if (getName() == "[ANONYMOUS]"){
+    if (target.empty() || target == "[ANONYMOUS]"){
         std::cout << RED << "Error : ClapTrap couldn't find the target" << RESET << std::endl;
         return;
     }
@@ -96,7 +101,7 @@ void    ClapTrap::attack(const std::string& target) {
         std::cout << RED << "Error : ClapTrap " << this->getName() << " needs more Mana" << RESET << std::endl;
         return;
     }
-    this->setManaPoint(this->getManaPoint() - 1);
+    _manaPoint--;
     std::cout << CYAN << "ClapTrap " << this->getName() << " attacks " << target << ", causing " << this->getAttackDamage() << " points of damage !" << RESET << std::endl;
     return;
 }
@@ -105,20 +110,13 @@ void    ClapTrap::attack(const std::string& target) {
 // Return: Nothing
 // Effect: decrease HP by <amount> points
 void    ClapTrap::takeDamage(unsigned int amount) {
-    int tempHP = this->getHitPoint();
-    const std::string name = this->getName();
-    
-    if (tempHP <= 0){
-        std::cout << RED << "Error : ClapTrap " << name << " already HS. Please stop." << RESET << std::endl;
+    if (_hitPoint <= 0){
+        std::cout << RED << "Error : ClapTrap " << _name << " already HS. Please stop." << RESET << std::endl;
         return;
     }
-    tempHP -= amount;
-    if (tempHP < 0) {
-        tempHP = 0;
-        std::cout << RED << "No more HP, so long ClapTrap " << name << "  !" << RESET << std::endl;
-    }
-    this->setHitPoint(tempHP);
-    std::cout << CYAN << "ClapTrap " << name << " took " << amount <<  " damages" << RESET << std::endl;
+    (int)amount <= _hitPoint ? _hitPoint -= amount : _hitPoint = 0;
+
+    std::cout << CYAN << "ClapTrap " << _name << " took " << amount <<  " damages" << RESET << std::endl;
     return;
 }
 
@@ -126,36 +124,42 @@ void    ClapTrap::takeDamage(unsigned int amount) {
 // Return: Nothing
 // Effect: decrease HP by <amount> points
 void    ClapTrap::beRepaired(unsigned int amount) {
-    int tempHP = this->getHitPoint();
-    int tempMP = this->getManaPoint();
-    const std::string name = this->getName();
-
-    if (tempMP <= 0){
-        std::cout << RED << "Error : ClapTrap " << name << " needs more Mana" << RESET << std::endl;
+    if (_manaPoint <= 0){
+        std::cout << RED << "Error : ClapTrap " << _name << " needs more Mana" << RESET << std::endl;
         return;
     }
-    if (tempHP == MAX_HP){
-        std::cout << RED << "Error : ClapTrap " << name << " is full life" << RESET << std::endl;
+    if (_hitPoint >= MAX_HP){
+        std::cout << RED << "Error : ClapTrap " << _name << " is full life" << RESET << std::endl;
         return;
     }
-    
-    tempHP += amount;
-    tempMP -= 1;
-    if (tempHP > MAX_HP) {
-        tempHP = MAX_HP;
-        std::cout << GREEN << "Good news : ClapTrap " << name << " is now full life !" << RESET << std::endl;
-    }
-    this->setHitPoint(tempHP);
-    this->setManaPoint(tempMP);
-    std::cout << CYAN << "ClapTrap " << name << " repairs himself, gg !" << RESET << std::endl;
-    
+    _manaPoint--;
+    (amount + _hitPoint) < MAX_HP ? _hitPoint += amount : _hitPoint = MAX_HP;
+    std::cout << CYAN << "ClapTrap " << _name << " repairs himself, gg !" << RESET << std::endl;
+    if (_hitPoint == MAX_HP)
+                std::cout << GREEN << "Good news : ClapTrap " << _name << " is now full life !" << RESET << std::endl;
     return;
 }
 
+// Input: non empty string 
+// Return: Nothing
+// Effect: change name of an anomymous robot
+void ClapTrap::renameAnonymous(const std::string newName) {
+    if (_name != "[ANONYMOUS]") {
+        std::cout << RED "Error : " << _name << " isn't anonymous." << RESET << std::endl;
+        return;
+    }
+    if (newName.empty() || newName == "[ANONYMOUS]") {
+        std::cout << RED "Error : invalid newName" << RESET << std::endl;
+        return; 
+    }
+    this -> setName(newName);
+}
+
+//No Input / No return
+//Displays all ClapTrap's info
 void ClapTrap::status(void) const {
-    std::cout << YELLOW "[ ClapTrap "<< this->_name << " ] Status report, minion!" RESET << std::endl;
-    std::cout << this->_name 
-              << " | HP: " << this->_hitPoint 
+    std::cout << YELLOW "[ ClapTrap "<< this->_name << " ]" RESET 
+              << "  HP: " << this->_hitPoint 
               << " | Mana: " << this->_manaPoint 
               << " | ATK: " << this->_attackDamage 
               << std::endl;

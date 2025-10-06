@@ -6,7 +6,7 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:26:48 by mairivie          #+#    #+#             */
-/*   Updated: 2025/10/03 16:39:54 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/10/06 16:28:10 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,13 @@ private:
     int         _hitPoint;
     int         _manaPoint;
     int         _attackDamage;
+
+    //=== SETTERS ===
+    void    setName(const std::string newName);
+    void    setHitPoint(const int newValue);
+    void    setManaPoint(const int newValue);
+    void    setAttackDamage(const int newValue);
+    
 public:
     /* constructor default, copy, affecation operator, destructor */
     ClapTrap();
@@ -47,17 +54,13 @@ public:
     int            getManaPoint(void) const;
     int            getAttackDamage(void) const;
 
-    //=== SETTERS ===
-    void    setName(const std::string newName);
-    void    setHitPoint(const int newValue);
-    void    setManaPoint(const int newValue);
-    void    setAttackDamage(const int newValue);
-
     //=== MEMBER FUNCTIONS ===
     void    attack(const std::string& target);
     void    takeDamage(unsigned int amount);
     void    beRepaired(unsigned int amount);
     void    status(void) const;
+
+    void    renameAnonymous(const std::string newName);
 };
 
 #endif
