@@ -6,47 +6,50 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:26:42 by mairivie          #+#    #+#             */
-/*   Updated: 2025/10/03 18:33:26 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/10/06 14:42:16 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
 ClapTrap::ClapTrap() {
-    _hitPoint = MAX_HP;
-    _manaPoint = MAX_MANA;
+    _hitPoint = MAX_HP_CT;
+    _maxHitPoint = MAX_HP_CT;
+    _manaPoint = MAX_MANA_CT;
     _attackDamage = 0;
     _name = "[ANONYMOUS]";
-    std::cout << BLUE << "Call constructor with no name" << RESET << std::endl;
+    std::cout << BLUE << "Call CT constructor with no name" << RESET << std::endl;
 }
 ClapTrap::ClapTrap(std::string name) {
-    _hitPoint = MAX_HP;
-    _manaPoint = MAX_MANA;
+    _hitPoint = MAX_HP_CT;
+    _maxHitPoint = MAX_HP_CT;
+    _manaPoint = MAX_MANA_CT;
     _attackDamage = 0;
     if (name == "") {
         _name = "[ANONYMOUS]";
-        std::cout << BLUE << "Call constructor with empty name" << RESET << std::endl;
+        std::cout << BLUE << "Call CT constructor with empty name" << RESET << std::endl;
         return;
     }
     _name = name;
-    std::cout << BLUE << "Call constructor with name." << RESET << std::endl;
+    std::cout << BLUE << "Call CT constructor with name." << RESET << std::endl;
 }
 ClapTrap::ClapTrap(const ClapTrap &toCopy) {
         *this = toCopy;
-        std::cout << BLUE << "Call copy function." << RESET << std::endl;
+        std::cout << BLUE << "Call CT copy function." << RESET << std::endl;
 }
 ClapTrap &ClapTrap::operator=(const ClapTrap &toCopy)
 {
     if(this != &toCopy) {
-        this->_name = toCopy.getName();
-        this->_hitPoint = toCopy.getHitPoint();
+        this->_name = toCopy._name;
+        this->_hitPoint = toCopy._hitPoint;
+        this->_maxHitPoint = toCopy._maxHitPoint;
         this->_manaPoint = toCopy.getManaPoint();
         this->_attackDamage = toCopy.getAttackDamage();
         }
     return *this;
 }
 ClapTrap::~ClapTrap() {
-std::cout << BLUE << "Call destructor." << RESET << std::endl;
+std::cout << BLUE << "Call CT " << _name << " destructor." << WHITE "Crap!" << RESET << std::endl;
 }
 
 //=== GETTERS ===
@@ -58,6 +61,10 @@ int ClapTrap::getHitPoint(void) const {
     int result = 0; 
     result = this -> _hitPoint;
     return(result);
+}
+
+int ClapTrap::getMaxHitPoint(void) const {
+    return _maxHitPoint;
 }
 
 int ClapTrap::getManaPoint(void) const {
@@ -81,7 +88,9 @@ void ClapTrap::setManaPoint(const int newValue) {
 void ClapTrap::setAttackDamage(const int newValue) {
     _attackDamage = newValue;
 }
-
+void ClapTrap::setMaxHitPoint(const int newValue) {
+    this -> _maxHitPoint = newValue;
+}
 //=== MEMBER FUNCTIONS ===
 
 // Input: valid target's Name
@@ -128,26 +137,25 @@ void    ClapTrap::takeDamage(unsigned int amount) {
 void    ClapTrap::beRepaired(unsigned int amount) {
     int tempHP = this->getHitPoint();
     int tempMP = this->getManaPoint();
-    const std::string name = this->getName();
 
     if (tempMP <= 0){
-        std::cout << RED << "Error : ClapTrap " << name << " needs more Mana" << RESET << std::endl;
+        std::cout << RED << "Error : " << _name << " needs more Mana" << RESET << std::endl;
         return;
     }
-    if (tempHP == MAX_HP){
-        std::cout << RED << "Error : ClapTrap " << name << " is full life" << RESET << std::endl;
+    if (tempHP == _maxHitPoint){
+        std::cout << RED << "Error : " << _name << " is full life" << RESET << std::endl;
         return;
     }
     
     tempHP += amount;
     tempMP -= 1;
-    if (tempHP > MAX_HP) {
-        tempHP = MAX_HP;
-        std::cout << GREEN << "Good news : ClapTrap " << name << " is now full life !" << RESET << std::endl;
+    if (tempHP > _maxHitPoint) {
+        tempHP = _maxHitPoint;
+        std::cout << GREEN << "Good news : " << _name << " is now full life !" << RESET << std::endl;
     }
     this->setHitPoint(tempHP);
     this->setManaPoint(tempMP);
-    std::cout << CYAN << "ClapTrap " << name << " repairs himself, gg !" << RESET << std::endl;
+    std::cout << CYAN << _name << " repairs himself! +" << amount << " HP, gg !" << RESET << std::endl;
     
     return;
 }
