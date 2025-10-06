@@ -6,7 +6,7 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:26:54 by mairivie          #+#    #+#             */
-/*   Updated: 2025/10/03 14:26:55 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/10/06 14:36:29 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,11 @@ int main(void) {
     boss.beRepaired(20);
     boss.status();
 
-    std::cout << PURPLE "\nThe factory is collapsing! Robots are shutting down..." RESET << std::endl;
+    std::cout << PURPLE "\nB0SS-Trap tries to repair again..." RESET << std::endl;
+    boss.beRepaired(40);
+    boss.status();
+    
+    std::cout << PURPLE "\nOVERLOAD ! The factory is collapsing! Robots must shut down..." RESET << std::endl;
 
     return EXIT_SUCCESS;
 }

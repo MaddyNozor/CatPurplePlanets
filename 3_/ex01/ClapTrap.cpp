@@ -6,7 +6,7 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:26:42 by mairivie          #+#    #+#             */
-/*   Updated: 2025/10/06 14:15:07 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/10/06 14:42:16 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &toCopy)
     return *this;
 }
 ClapTrap::~ClapTrap() {
-std::cout << BLUE << "Call CT " << _name << " destructor." << RESET << std::endl;
+std::cout << BLUE << "Call CT " << _name << " destructor." << WHITE "Crap!" << RESET << std::endl;
 }
 
 //=== GETTERS ===
