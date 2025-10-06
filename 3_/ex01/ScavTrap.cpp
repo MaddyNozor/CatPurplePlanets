@@ -6,7 +6,7 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:26:57 by mairivie          #+#    #+#             */
-/*   Updated: 2025/10/06 14:40:44 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/10/06 14:58:45 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,10 @@ void    ScavTrap::attack(const std::string& target) {
 // Return: none
 // Effect: Info, ScavTrap is in guard mode.
 void ScavTrap::guardGate() {
+    std::cout << "Here I come to save the day!" << std::endl;
 	std::cout << GREEN "ScavTrap " << getName() << " is in GATE KEEPER mode" RESET << std::endl;
     //std::cout << GREEN "ScavTrap " << _name << " is in GATE KEEPER mode" RESET << std::endl;
+    std::cout << "Look at me! I'm dancing! I'm dancing!" << std::endl;
 }
 
 void ScavTrap::status() const {
