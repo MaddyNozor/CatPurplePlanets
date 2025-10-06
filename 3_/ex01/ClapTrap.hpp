@@ -6,7 +6,7 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:26:48 by mairivie          #+#    #+#             */
-/*   Updated: 2025/10/03 16:39:54 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/10/06 14:12:39 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,37 +21,43 @@
 // ===== DEFINE CLEAN CODE =====
 #define EXIT_SUCCESS 0
 #define EXIT_FAIL 1
-#define MAX_HP 10
-#define MAX_MANA 10
+#define MAX_HP_CT 10
+#define MAX_MANA_CT 10
+#define MAX_HP_ST 100
+#define MAX_MANA_ST 50
 
 
 // ===== CLASS DECLARATION =====
 class ClapTrap
 {
-private:
+protected:
     std::string _name;
     int         _hitPoint;
     int         _manaPoint;
     int         _attackDamage;
+    int         _maxHitPoint;
+    
 public:
     /* constructor default, copy, affecation operator, destructor */
     ClapTrap();
     ClapTrap(std::string name);
     ClapTrap(const ClapTrap &toCopy);
     ClapTrap &operator=(const ClapTrap &toCopy);
-    ~ClapTrap();
+    virtual ~ClapTrap();
 
     //=== GETTERS ===
     std::string    getName(void) const;
     int            getHitPoint(void) const;
     int            getManaPoint(void) const;
     int            getAttackDamage(void) const;
+    int            getMaxHitPoint(void) const;
 
     //=== SETTERS ===
     void    setName(const std::string newName);
     void    setHitPoint(const int newValue);
     void    setManaPoint(const int newValue);
     void    setAttackDamage(const int newValue);
+    void    setMaxHitPoint(const int newValue);
 
     //=== MEMBER FUNCTIONS ===
     void    attack(const std::string& target);

@@ -6,7 +6,7 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:26:57 by mairivie          #+#    #+#             */
-/*   Updated: 2025/10/03 14:28:55 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/10/06 14:15:47 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 ScavTrap::ScavTrap() {
     this->setHitPoint(MAX_HP_ST);
+    setMaxHitPoint(MAX_HP_ST);
     setManaPoint(MAX_MANA_ST);
     setAttackDamage(20);
     setName("[ANONYMOUS]");
@@ -22,6 +23,7 @@ ScavTrap::ScavTrap() {
 
 ScavTrap::ScavTrap(std::string name) {
     this->setHitPoint(MAX_HP_ST);
+    setMaxHitPoint(MAX_HP_ST);
     setManaPoint(MAX_MANA_ST);
     setAttackDamage(20);
     if (name == "") {
@@ -49,7 +51,7 @@ ScavTrap &ScavTrap::operator=(const ScavTrap &toCopy) {
 }
 
 ScavTrap::~ScavTrap() {
-std::cout << BLUE << "Call Scav Trap destructor." << RESET << std::endl;
+std::cout << BLUE << "Call Scav Trap " << _name << " destructor." << RESET << std::endl;
 }
 
 // Input: valid target's Name
@@ -74,4 +76,13 @@ void    ScavTrap::attack(const std::string& target) {
 // Effect: Info, ScavTrap is in guard mode.
 void ScavTrap::guardGate() {
 	std::cout << GREEN "ScavTrap " << getName() << " is in GATE KEEPER mode" RESET << std::endl;
+}
+
+void ScavTrap::status() const {
+    std::cout << YELLOW "[ ScavTrap "<< this->_name << " ] Status report, minion!" RESET << std::endl;
+    std::cout << this->_name 
+              << " | HP: " << this->_hitPoint 
+              << " | Mana: " << this->_manaPoint 
+              << " | ATK: " << this->_attackDamage 
+              << std::endl;
 }
