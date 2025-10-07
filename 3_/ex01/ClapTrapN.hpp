@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
+/*   ClapTrapN.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:26:48 by mairivie          #+#    #+#             */
-/*   Updated: 2025/10/07 10:51:40 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/10/07 10:49:47 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ protected:
     void    setHitPoint(const int newValue);
     void    setManaPoint(const int newValue);
     void    setAttackDamage(const int newValue);
-    void    setMaxHitPoint(const int newValue);
     
 public:
     /* constructor default, copy, affecation operator, destructor */
@@ -57,8 +56,6 @@ public:
     int            getHitPoint(void) const;
     int            getManaPoint(void) const;
     int            getAttackDamage(void) const;
-    int            getMaxHitPoint(void) const;
-
 
     //=== MEMBER FUNCTIONS ===
     void    attack(const std::string& target);
