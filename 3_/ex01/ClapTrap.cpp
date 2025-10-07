@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ClapTrapC.cpp                                      :+:      :+:    :+:   */
+/*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:26:42 by mairivie          #+#    #+#             */
-/*   Updated: 2025/10/07 11:02:55 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/10/07 11:39:13 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,10 @@ int ClapTrap::getHitPoint(void) const {
     return _hitPoint;
 }
 
+int ClapTrap::getMaxHitPoint(void) const {
+    return _maxHitPoint;
+}
+
 int ClapTrap::getManaPoint(void) const {
     return _manaPoint;
 }
@@ -95,12 +99,8 @@ void ClapTrap::setAttackDamage(const int newValue) {
 // Return: Nothing
 // Effect: explicit what's happenning when ClapTrap attacks
 void    ClapTrap::attack(const std::string& target) {
-    if (target.empty() || target == "[ANONYMOUS]"){
-        std::cout << RED << "Error : ClapTrap couldn't find the target" << RESET << std::endl;
-        return;
-    }
     if (getManaPoint() <= 0){
-        std::cout << RED << "Error : ClapTrap " << this->getName() << " needs more Mana" << RESET << std::endl;
+        std::cout << RED << "Error : ClapTrap " << _name << " needs more Mana" << RESET << std::endl;
         return;
     }
     _manaPoint--;
@@ -130,14 +130,14 @@ void    ClapTrap::beRepaired(unsigned int amount) {
         std::cout << RED << "Error : ClapTrap " << _name << " needs more Mana" << RESET << std::endl;
         return;
     }
-    if (_hitPoint >= MAX_HP_CT){
+    if (_hitPoint >= _maxHitPoint){
         std::cout << RED << "Error : ClapTrap " << _name << " is full life" << RESET << std::endl;
         return;
     }
     _manaPoint--;
-    (amount + _hitPoint) < MAX_HP_CT ? _hitPoint += amount : _hitPoint = MAX_HP_CT;
+    ((int)amount + _hitPoint) < _maxHitPoint ? _hitPoint += amount : _hitPoint = _maxHitPoint;
     std::cout << CYAN << "ClapTrap " << _name << " repairs himself, gg !" << RESET << std::endl;
-    if (_hitPoint == MAX_HP_CT)
+    if (_hitPoint == _maxHitPoint)
                 std::cout << GREEN << "Good news : ClapTrap " << _name << " is now full life !" << RESET << std::endl;
     return;
 }

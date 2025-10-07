@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ClapTrapN.hpp                                      :+:      :+:    :+:   */
+/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:26:48 by mairivie          #+#    #+#             */
-/*   Updated: 2025/10/07 10:49:47 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/10/07 11:19:46 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ public:
     //=== GETTERS ===
     std::string    getName(void) const;
     int            getHitPoint(void) const;
+    int            getMaxHitPoint(void) const;
     int            getManaPoint(void) const;
     int            getAttackDamage(void) const;
 

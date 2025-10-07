@@ -6,7 +6,7 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:27:01 by mairivie          #+#    #+#             */
-/*   Updated: 2025/10/06 14:13:29 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/10/07 11:08:12 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,6 @@ class ScavTrap : public ClapTrap{
 };
 
 //See ? No new setters or getters here
-//I can still use them (ClapTrap's) in .cpp
+//I can still use protected var in (ClapTrap's) in .cpp
 
 #endif
