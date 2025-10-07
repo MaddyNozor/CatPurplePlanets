@@ -6,7 +6,7 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:27:10 by mairivie          #+#    #+#             */
-/*   Updated: 2025/10/06 15:44:50 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/10/07 12:03:21 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,3 +63,4 @@ int main(void) {
 
     return EXIT_SUCCESS;
 }
+
