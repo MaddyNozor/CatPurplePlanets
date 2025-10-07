@@ -6,7 +6,7 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:26:42 by mairivie          #+#    #+#             */
-/*   Updated: 2025/10/06 18:20:00 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/10/07 12:36:15 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,7 @@ void    ClapTrap::beRepaired(unsigned int amount) {
     }
     _manaPoint--;
     (amount + _hitPoint) < MAX_HP ? _hitPoint += amount : _hitPoint = MAX_HP;
-    std::cout << CYAN << "ClapTrap " << _name << " repairs himself, gg !" << RESET << std::endl;
+    std::cout << CYAN << _name << " repairs himself and regains up to " << amount << " HP !" << RESET << std::endl;
     if (_hitPoint == MAX_HP)
                 std::cout << GREEN << "Good news : ClapTrap " << _name << " is now full life !" << RESET << std::endl;
     return;

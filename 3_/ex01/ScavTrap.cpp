@@ -6,53 +6,11 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:26:57 by mairivie          #+#    #+#             */
-/*   Updated: 2025/10/07 11:43:54 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/10/07 12:06:59 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
-
-// ScavTrap::ScavTrap() {
-//     this->setHitPoint(MAX_HP_ST);
-//     setMaxHitPoint(MAX_HP_ST);
-//     setManaPoint(MAX_MANA_ST);
-//     setAttackDamage(20);
-//     setName("[ANONYMOUS]");
-//     std::cout << BLUE << "Call ScavTrap constructor with no name." << RESET << std::endl;
-// }
-
-// ScavTrap::ScavTrap(std::string name) {
-//     this->setHitPoint(MAX_HP_ST);
-//     setMaxHitPoint(MAX_HP_ST);
-//     this->_manaPoint = MAX_MANA_ST;
-//     _attackDamage = 20;
-//     if (name == "") {
-//         setName("[ANONYMOUS]");
-//         std::cout << BLUE << "Call ScavTrap constructor with empty name" << RESET << std::endl;
-//         return;
-//     }
-//     setName(name);
-//     std::cout << BLUE << "Call ScavTrap constructor with name." << RESET << std::endl;
-// }
-
-// ScavTrap::ScavTrap(const ScavTrap &toCopy) : ScavTrap(toCopy) {
-//     *this = toCopy;
-//     std::cout << BLUE << "Call ScavTrap copy function." << RESET << std::endl;
-// }
-
-// ScavTrap &ScavTrap::operator=(const ScavTrap &toCopy) {
-//     if(this != &toCopy) {
-//         this->setName(toCopy.getName());
-//         this->setHitPoint(toCopy._hitPoint);
-//         this->_attackDamage = toCopy._attackDamage;
-//         _manaPoint = toCopy._manaPoint;
-//     }
-//     return *this;
-// }
-
-// ScavTrap::~ScavTrap() {
-// std::cout << BLUE << "Call Scav Trap " << _name << " destructor." << CYAN << " I'll die the way I lived: annoying!" << RESET << std::endl;
-// }
 
 ScavTrap::ScavTrap() {
     _hitPoint = MAX_HP_ST;
