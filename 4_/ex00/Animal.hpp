@@ -6,7 +6,7 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 12:21:25 by mairivie          #+#    #+#             */
-/*   Updated: 2025/10/10 12:40:59 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/10/10 14:41:19 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,18 @@
 // ===== CLASS DECLARATION =====
 class Animal
 {
-private:
+    protected:
+        std::string _type;
 
+    public:
+        /* default constructor, copy constructor, affecation operator, default destructor */
+        Animal();
+        Animal(const Animal &toCopy);
+        Animal &operator=(const Animal &toCopy);
+        virtual ~Animal();
 
-public:
-    /* default constructor, copy constructor, affecation operator, default destructor */
-    Animal();
-    Animal(const Animal &toCopy);
-    Animal &operator=(const Animal &toCopy);
-    virtual ~Animal();
+        const std::string   & getType() const;
 
-
+        void    makeSound( void );
 };
 #endif

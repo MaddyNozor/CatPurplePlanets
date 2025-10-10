@@ -6,7 +6,7 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 12:21:37 by mairivie          #+#    #+#             */
-/*   Updated: 2025/10/10 12:39:20 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/10/10 15:21:59 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@
 #include "colors.hpp"
 #include <iostream>
 #include <string>
+#include "Animal.hpp"
 
 // ===== DEFINE CLEAN CODE =====
 #define EXIT_SUCCESS 0
 #define EXIT_FAIL 1
 
 // ===== CLASS DECLARATION =====
-class Dog
-{
+class Dog : public Animal {
 private:
 
 
@@ -35,6 +35,6 @@ public:
     Dog &operator=(const Dog &toCopy);
     ~Dog();
 
-
+    void    makeSound( void );
 };
 #endif

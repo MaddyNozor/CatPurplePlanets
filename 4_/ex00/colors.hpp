@@ -6,7 +6,7 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 12:34:38 by mairivie          #+#    #+#             */
-/*   Updated: 2025/10/10 12:36:40 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/10/10 15:15:14 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 #define WHITE "\033[37m"
 #define YELLOW "\033[33m"
 #define BLUE "\033[34m"
-#define MAGENTA "\033[35m"
+#define PURPLE "\033[35m"
 #define CYAN "\033[36m"
 
 #define BOLD "\033[1m"
