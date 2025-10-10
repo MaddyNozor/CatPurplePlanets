@@ -11,7 +11,7 @@
       "cwd": "/home/mairivie/00_github/42_CPP/4_/ex00",
       "program": "/home/mairivie/00_github/42_CPP/4_/ex00/build/Debug/outDebug",
       "MIMode": "gdb",
-      "miDebuggerPath": "gdb",
+      "miDebuggerPath": "/usr/bin/gdb",
       "setupCommands": [
         {
           "description": "Enable pretty-printing for gdb",

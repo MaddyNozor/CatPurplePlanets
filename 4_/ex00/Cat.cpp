@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
+/*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/10 12:21:34 by mairivie          #+#    #+#             */
-/*   Updated: 2025/10/10 12:39:35 by mairivie         ###   ########.fr       */
+/*   Created: 2025/10/10 12:21:28 by mairivie          #+#    #+#             */
+/*   Updated: 2025/10/10 12:39:29 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
+#include "Cat.hpp"
 
-Dog::Dog() {
-std::cout << BLUE << "Call Dog default constructor." << RESET << std::endl;
+Cat::Cat() {
+std::cout << BLUE << "Call Cat default constructor." << RESET << std::endl;
 }
 
-Dog::Dog(const Dog &toCopy)
+Cat::Cat(const Cat &toCopy)
 {
     *this = toCopy;
 }
 
-Dog &Dog::operator=(const Dog &toCopy)
+Cat &Cat::operator=(const Cat &toCopy)
 {
     if(this != &toCopy)
     {
@@ -30,6 +30,6 @@ Dog &Dog::operator=(const Dog &toCopy)
     return *this;
 }
 
-Dog::~Dog() {
-std::cout << BLUE << "Call Dog default destructor." << RESET << std::endl;
+Cat::~Cat() {
+std::cout << BLUE << "Call Cat default destructor." << RESET << std::endl;
 }
