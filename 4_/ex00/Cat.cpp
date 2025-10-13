@@ -6,13 +6,14 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 12:21:28 by mairivie          #+#    #+#             */
-/*   Updated: 2025/10/13 09:09:28 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/10/13 11:45:30 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 
 Cat::Cat() {
+    _type = "Cat";
 std::cout << BLUE << "Call Cat default constructor." << RESET << std::endl;
 }
 

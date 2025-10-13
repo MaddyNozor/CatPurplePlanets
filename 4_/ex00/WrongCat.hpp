@@ -6,7 +6,7 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 08:56:35 by mairivie          #+#    #+#             */
-/*   Updated: 2025/10/13 09:04:35 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/10/13 11:32:44 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ class WrongCat : public WrongAnimal
         WrongCat &operator=(const WrongCat &toCopy);
         ~WrongCat();
 
-
+    void    makeSound( void ) const;
 };
 
 #endif

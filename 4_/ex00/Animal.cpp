@@ -6,7 +6,7 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 12:21:22 by mairivie          #+#    #+#             */
-/*   Updated: 2025/10/13 09:09:21 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/10/13 11:53:37 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,5 @@ const std::string &Animal::getType( void ) const {
 
 
 void    Animal::makeSound( void ) const{
-    std::cout << BG_BLUE "Far away, a mysterious animal cries. What could it be ?" << RESET << std::endl;
+    std::cout << GREEN "A mysterious animal cries" << RESET << std::endl;
 }
