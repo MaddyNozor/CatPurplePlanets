@@ -6,15 +6,16 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 12:21:28 by mairivie          #+#    #+#             */
-/*   Updated: 2025/10/13 12:34:50 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/10/13 15:07:38 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 
-Cat::Cat() {
+Cat::Cat() : Animal() {
     _type = "Cat";
-std::cout << BLUE << "Call Cat default constructor." << RESET << std::endl;
+    _brain = new Brain();
+std::cout << PURPLE << "Call Cat default constructor." << RESET << std::endl;
 }
 
 Cat::Cat(const Cat &toCopy)
@@ -35,7 +36,8 @@ Cat &Cat::operator=(const Cat &toCopy)
 }
 
 Cat::~Cat() {
-std::cout << BLUE << "Call Cat default destructor." << RESET << std::endl;
+    delete _brain;
+    std::cout << PURPLE << "Call Cat default destructor." << RESET << std::endl;
 }
 
 void    Cat::makeSound( void ) const{

@@ -6,14 +6,14 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 12:06:39 by mairivie          #+#    #+#             */
-/*   Updated: 2025/10/13 12:11:08 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/10/13 14:52:37 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Brain.hpp"
 
 Brain::Brain() {
-std::cout << BLUE << "Call Brain default constructor." << RESET << std::endl;
+std::cout << CYAN << "Call Brain default constructor." << RESET << std::endl;
 }
 
 Brain::Brain(const Brain &toCopy)
@@ -33,5 +33,5 @@ Brain &Brain::operator=(const Brain &toCopy)
 }
 
 Brain::~Brain() {
-std::cout << BLUE << "Call Brain default destructor." << RESET << std::endl;
+std::cout << CYAN << "Call Brain default destructor." << RESET << std::endl;
 }

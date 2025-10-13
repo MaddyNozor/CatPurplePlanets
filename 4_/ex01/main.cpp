@@ -6,7 +6,7 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 12:21:41 by mairivie          #+#    #+#             */
-/*   Updated: 2025/10/13 12:33:19 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/10/13 15:05:02 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,40 +37,41 @@ int main()
 {
     
     const Animal *a = new Animal();
-	std::cout << "Object a is a " << a->getType() << std::endl;
+	std::cout << "----- Object a is a " << a->getType() << "\n--- ";
 	a->makeSound();
+    delete a;
     
 	std::cout << std::endl;
     
 	const Animal *b = new Dog();
-	std::cout << "Object b is a " << b->getType() << std::endl;
+	std::cout << "----- Object b is a " << b->getType() << "\n--- ";
 	b->makeSound();
+	delete b;
     
 	std::cout << std::endl;
     
 	const Animal *c = new Cat();
-	std::cout << "Object c is a " << c->getType() << std::endl;
+	std::cout << "----- Object c is a " << c->getType() << "\n--- ";
 	c->makeSound();
-    
-	std::cout << std::endl;
-    
-	const WrongAnimal *wa = new WrongAnimal();
-	std::cout << "Object wa is a " << wa->getType() << std::endl;
-	wa->makeSound();
-    
-	std::cout << std::endl;
-    
-	const WrongAnimal *wb = new WrongCat();
-	std::cout << "Object wb is a " << wb->getType() << std::endl;
-	wb->makeSound();
-	
-	std::cout << std::endl;
-
-    delete a;
-	delete b;
 	delete c;
-	delete wa;
-    delete wb;
 
-	return 0;
+	std::cout << std::endl;
+    
+    std::cout << "--- TESTS WITH ARRAY ---\nLook ! They're smart animals, some are dogs, some are cats. " << "\n";
+
+    Animal *animals[6] = {new Dog(), new Dog(), new Cat(), new Cat(), new Cat(), new Dog()};
+	
+    std::cout << " \nThey make some noises ! " << "\n";
+	for (int i = 0; i < 6; i++)
+		animals[i]->makeSound();
+
+    std::cout << " \nToo much noise. Go home cats and dogs " << "\n";
+	 for (int i = 0; i < 6; i++){
+         delete animals[i];
+        std::cout << "\n";
+     }
+
+	std::cout << std::endl;
+
+	return EXIT_SUCCESS;
 }

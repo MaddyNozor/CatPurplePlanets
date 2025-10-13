@@ -6,7 +6,7 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 12:06:36 by mairivie          #+#    #+#             */
-/*   Updated: 2025/10/13 12:11:57 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/10/13 14:49:48 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ class Brain
 {
 	protected :
 		std::string _ideas[100];
-
-
     public:
         /* default constructor, copy constructor, affecation operator, default destructor */
         Brain();
