@@ -6,7 +6,7 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 12:21:37 by mairivie          #+#    #+#             */
-/*   Updated: 2025/10/13 09:12:50 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/10/13 12:21:03 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <iostream>
 #include <string>
 #include "Animal.hpp"
+#include "Brain.hpp"
 
 // ===== DEFINE CLEAN CODE =====
 #define EXIT_SUCCESS 0
@@ -26,6 +27,8 @@
 // ===== CLASS DECLARATION =====
 class Dog : public Animal 
 {
+    private: 
+        Brain* _brain;
     public:
         /* default constructor, copy constructor, affecation operator, default destructor */
         Dog();

@@ -6,7 +6,7 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 12:21:34 by mairivie          #+#    #+#             */
-/*   Updated: 2025/10/13 11:49:15 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/10/13 12:34:48 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,10 @@ Dog &Dog::operator=(const Dog &toCopy)
 {
     if(this != &toCopy)
     {
-
+		_type = toCopy._type;
+		if (_brain)
+			delete _brain;
+		_brain = new Brain(*toCopy._brain);
     }
     return *this;
 }
