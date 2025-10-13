@@ -6,7 +6,7 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 08:56:29 by mairivie          #+#    #+#             */
-/*   Updated: 2025/10/13 08:56:56 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/10/13 09:09:05 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,17 @@
 // ===== CLASS DECLARATION =====
 class WrongAnimal
 {
-private:
+    protected:
+        std::string _type;
 
+    public:
+        /* default constructor, copy constructor, affecation operator, default destructor */
+        WrongAnimal();
+        WrongAnimal(const WrongAnimal &toCopy);
+        WrongAnimal &operator=(const WrongAnimal &toCopy);
+        virtual ~WrongAnimal();
 
-public:
-    /* default constructor, copy constructor, affecation operator, default destructor */
-    WrongAnimal();
-    WrongAnimal(const WrongAnimal &toCopy);
-    WrongAnimal &operator=(const WrongAnimal &toCopy);
-    ~WrongAnimal();
-
+        void    makeSound( void ) const;
 
 };
 #endif

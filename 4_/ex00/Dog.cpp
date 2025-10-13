@@ -6,7 +6,7 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 12:21:34 by mairivie          #+#    #+#             */
-/*   Updated: 2025/10/10 15:25:48 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/10/13 09:09:32 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,6 @@ Dog::~Dog() {
 std::cout << BLUE << "Call Dog default destructor." << RESET << std::endl;
 }
 
-void    Dog::makeSound( void ){
+void    Dog::makeSound( void ) const{
     std::cout << PURPLE "Waf Waf ! ** " << RESET << std::endl;
 }

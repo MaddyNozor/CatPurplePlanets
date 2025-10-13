@@ -6,7 +6,7 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 12:21:37 by mairivie          #+#    #+#             */
-/*   Updated: 2025/10/10 15:21:59 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/10/13 09:09:00 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,15 @@
 #define EXIT_FAIL 1
 
 // ===== CLASS DECLARATION =====
-class Dog : public Animal {
-private:
+class Dog : public Animal 
+{
+    public:
+        /* default constructor, copy constructor, affecation operator, default destructor */
+        Dog();
+        Dog(const Dog &toCopy);
+        Dog &operator=(const Dog &toCopy);
+        ~Dog();
 
-
-public:
-    /* default constructor, copy constructor, affecation operator, default destructor */
-    Dog();
-    Dog(const Dog &toCopy);
-    Dog &operator=(const Dog &toCopy);
-    ~Dog();
-
-    void    makeSound( void );
+        void    makeSound( void ) const;
 };
 #endif

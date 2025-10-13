@@ -6,15 +6,29 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 12:21:41 by mairivie          #+#    #+#             */
-/*   Updated: 2025/10/10 14:43:30 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/10/13 09:10:48 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
+#include "WrongAnimal.hpp"
+#include "WrongCat.hpp"
 #include "colors.hpp"
 
 int main(void) {
+    const Animal* meta = new Animal();
+    const Animal* j = new Dog();
+    const Animal* i = new Cat();
+    std::cout << j->getType() << " " << std::endl;
+    std::cout << i->getType() << " " << std::endl;
+    i->makeSound(); //will output the cat sound!
+    j->makeSound();
+    meta->makeSound();
+
+    delete i;
+    delete j;
+    delete meta;
     return EXIT_SUCCESS;
 }

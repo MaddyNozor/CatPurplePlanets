@@ -6,7 +6,7 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 08:56:35 by mairivie          #+#    #+#             */
-/*   Updated: 2025/10/13 08:57:03 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/10/13 09:04:35 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,24 +17,23 @@
 #include "colors.hpp"
 #include <iostream>
 #include <string>
+#include "WrongAnimal.hpp"
 
 // ===== DEFINE CLEAN CODE =====
 #define EXIT_SUCCESS 0
 #define EXIT_FAIL 1
 
 // ===== CLASS DECLARATION =====
-class WrongCat
+class WrongCat : public WrongAnimal 
 {
-private:
-
-
-public:
-    /* default constructor, copy constructor, affecation operator, default destructor */
-    WrongCat();
-    WrongCat(const WrongCat &toCopy);
-    WrongCat &operator=(const WrongCat &toCopy);
-    ~WrongCat();
+    public:
+        /* default constructor, copy constructor, affecation operator, default destructor */
+        WrongCat();
+        WrongCat(const WrongCat &toCopy);
+        WrongCat &operator=(const WrongCat &toCopy);
+        ~WrongCat();
 
 
 };
+
 #endif

@@ -6,7 +6,7 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 12:21:28 by mairivie          #+#    #+#             */
-/*   Updated: 2025/10/10 15:24:31 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/10/13 09:09:28 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,6 @@ Cat::~Cat() {
 std::cout << BLUE << "Call Cat default destructor." << RESET << std::endl;
 }
 
-void    Cat::makeSound( void ){
+void    Cat::makeSound( void ) const{
     std::cout << PURPLE "Mew Miew ! *purr purr purr* " << RESET << std::endl;
 }
