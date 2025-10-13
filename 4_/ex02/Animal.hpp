@@ -6,7 +6,7 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 12:21:25 by mairivie          #+#    #+#             */
-/*   Updated: 2025/10/13 12:18:28 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/10/13 17:36:43 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,6 @@ class Animal
         virtual ~Animal();
 
         virtual const std::string   & getType() const;
-        virtual void    makeSound( void ) const;
+        virtual void    makeSound( void ) const = 0;
 };
 #endif

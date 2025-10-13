@@ -6,7 +6,7 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 08:56:35 by mairivie          #+#    #+#             */
-/*   Updated: 2025/10/13 11:32:44 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/10/13 17:17:30 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,3 +37,4 @@ class WrongCat : public WrongAnimal
 };
 
 #endif
+
