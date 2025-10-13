@@ -6,7 +6,7 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 12:21:41 by mairivie          #+#    #+#             */
-/*   Updated: 2025/10/13 09:10:48 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/10/13 09:14:15 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ int main(void) {
     std::cout << j->getType() << " " << std::endl;
     std::cout << i->getType() << " " << std::endl;
     i->makeSound(); //will output the cat sound!
-    j->makeSound();
-    meta->makeSound();
+    j->makeSound(); //will output the dat sound!
+    meta->makeSound(); //will output the default animal sound!
 
     delete i;
     delete j;

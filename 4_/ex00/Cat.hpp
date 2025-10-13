@@ -6,7 +6,7 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 12:21:31 by mairivie          #+#    #+#             */
-/*   Updated: 2025/10/13 09:08:56 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/10/13 09:12:43 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,6 @@ class Cat : public Animal
         Cat &operator=(const Cat &toCopy);
         ~Cat();
 
-        void    makeSound( void ) const;
+        virtual void    makeSound( void ) const;
 };
 #endif
