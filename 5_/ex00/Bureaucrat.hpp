@@ -6,7 +6,7 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:20:01 by mairivie          #+#    #+#             */
-/*   Updated: 2025/10/27 18:33:46 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/10/28 16:17:04 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,18 @@
 class Bureaucrat
 {
 private:
-    const std::string   _name;
-    int                 _rank;
+    std::string   _name;
+    int           _rank;
 
 public:
     Bureaucrat();
-    Bureaucrat(const Bureaucrat &toCopy);
-    Bureaucrat &operator=(const Bureaucrat &toCopy);
+    Bureaucrat(std::string name, int rank);
+    Bureaucrat(Bureaucrat const & toCopy);
+    Bureaucrat const &operator=(Bureaucrat const & toCopy);
     ~Bureaucrat();
+
+    std::string const  & getName() const;
+    int const & getRank() const;
 
 class GradeTooHighException : public std::exception {
     public:
@@ -50,8 +54,10 @@ class GradeTooLowException : public std::exception {
         };
 };
 
-void checkRank(const int newvalue) const;
+//void checkRank(const int newvalue) const;
 
 };
+
+std::ostream & operator<<(std::ostream & s, Bureaucrat const & buro);
 
 #endif
