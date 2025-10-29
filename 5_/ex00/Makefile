@@ -6,7 +6,7 @@
 #    By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/27 11:19:55 by mairivie          #+#    #+#              #
-#    Updated: 2025/10/27 15:37:19 by mairivie         ###   ########.fr        #
+#    Updated: 2025/10/29 12:17:29 by mairivie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ CPP       = c++
 CPPFLAGS  = -Wall -Wextra -Werror -std=c++98
 
 NAME = bureaucrat
-SRCS = main.cpp Bureaucrat.cpp exception.cpp
+SRCS = main.cpp Bureaucrat.cpp
 OBJ_DIR = obj
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.cpp=.o))
 

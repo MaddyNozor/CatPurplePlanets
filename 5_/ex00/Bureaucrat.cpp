@@ -6,7 +6,7 @@
 /*   By: mairivie <mairivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:19:58 by mairivie          #+#    #+#             */
-/*   Updated: 2025/10/28 18:41:15 by mairivie         ###   ########.fr       */
+/*   Updated: 2025/10/29 17:28:19 by mairivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,61 +14,38 @@
 
 Bureaucrat::Bureaucrat() {
     std::cout << BLUE << "Call default Bureaucrat constructor.\n";
-    this->_name = "[Mr X]";
-    this->_rank = 150;
     std::cout << RED << "Warning : construct Bureaucrat without name or rank." << RESET << std::endl;
+
 }
 
-Bureaucrat::Bureaucrat(std::string const name, int rank) {
-    std::cout << BLUE << "Call Bureaucrat constructor." << RESET "\n";
-    // if (name == "") {
-    //     std::cout << "Need a name\n";
-    //     return;
-    // }
-    this->_name = name;
-    // try
-    // {
-    //     if (rank > 150)
-    //         throw GradeTooLowException();
-    //     else if (rank < 1)
-    //         throw GradeTooHighException();
-    //     else
-            this->_rank = rank;
-    // }
-    //     catch (const GradeTooHighException & low) 
-    // {
-    //     std:: cout << YELLOW "Exeption caught : "<< RESET " \n";
-    //     std::cout << low.what();
-    //     std:: cout << RED "Cannot set rank value : highest grade is 1 and yours is " << rank << RESET " \n";
-    //     return;
-    // }
-    // catch (const GradeTooLowException & high) 
-    // {
-    //     std:: cout << YELLOW "Exeption caught : "<< RESET " \n";
-    //     std::cout << high.what();
-    //     std:: cout << RED "Cannot set rank value : lowest grade is 150 and yours is " << rank << RESET " \n";
-    //             return;
-    // }
-    //  std::cout << CYAN << *this << RESET "\n";
+Bureaucrat::Bureaucrat(std::string const & name, int rank) : _name(name) {
+    if (rank > 150)
+    throw GradeTooLowException();
+    else if (rank < 1)
+    throw GradeTooHighException();
+    else
+    this->_rank = rank;
+    std::cout << BLUE << "Welcome "<< getName() << " ! Your grade is "<< getRank() << RESET "\n";
 }
 
-Bureaucrat::Bureaucrat(Bureaucrat const & toCopy)
+Bureaucrat::Bureaucrat(Bureaucrat const & toCopy)  : _name(toCopy.getName())
 {
+    std::cout << BLUE << "Call Copy constructor." << RESET "\n";
     *this = toCopy;
 }
+
 
 Bureaucrat const & Bureaucrat::operator=(Bureaucrat const & toCopy)
 {
     if(this != &toCopy)
     {
-        _name = toCopy.getName();
-        _rank = toCopy.getRank();
+        _rank = toCopy._rank;
     }
     return *this;
 }
 
 Bureaucrat::~Bureaucrat() {
-std::cout << BLUE << "Call Bureaucrat default destructor." << RESET << std::endl;
+std::cout <<  getName() <<  BLUE " ! You're fired !" << RESET << std::endl;
 }
 
 std::string const  & Bureaucrat::getName() const {
@@ -79,10 +56,35 @@ int const & Bureaucrat::getRank() const {
    return this->_rank; 
 }
 
+int Bureaucrat::setRank(int const newRank) {
+    return _rank = newRank;
+}
+
+void Bureaucrat::promote(){
+    int newRank = getRank() - 1;
+    if (newRank < 1) {
+        std::cout << YELLOW "Oups, sorry BigBoss, I've made a mistake. Don't fire me please \n" RESET << std::endl;
+        throw Bureaucrat::GradeTooHighException();
+    }
+    else{
+        setRank(newRank);
+        std::cout << GREEN "Congrats, "<< getName()  <<" you've been promoted !" RESET << std::endl;
+    }
+}
+
+void Bureaucrat::demote() {
+    int newRank = getRank() + 1;
+    if (newRank > 150) {
+        std::cout << YELLOW "Oh it's you. Looks like you're already a minion. Maybe should I fire you ?\n" RESET ;
+        throw Bureaucrat::GradeTooLowException();
+    }
+    else{
+        setRank(newRank);
+        std::cout << RED "I have to retrograde you, "<< getName()  <<" . Hit your targets next month ! \n" RESET ;   
+    }
+}
+
 std::ostream & operator<<(std::ostream & s, Bureaucrat const & buro) {
-    s << buro.getName() 
-    << ", bureaucrat grade " 
-    << buro.getRank() 
-    << ".\n";
+    s << buro.getName() << ", bureaucrat grade " << buro.getRank() << "." << std::endl;
     return s;
 }
